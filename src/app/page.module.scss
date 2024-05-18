@@ -66,22 +66,12 @@
   transition: background-color 0.3s;
 }
 
-// .registerButton:hover {
-//   background-color: lightgray;
-// }
-
 .footer {
   text-align: center;
   margin-top: 40px;
   color: #666;
   font-size: 14px;
 }
-
-// .testPhoto {
-//   height: 300px;
-//   width: 100%;
-//   object-fit: cover;
-// }
 
 /* About.styling */
 .about {
@@ -90,20 +80,32 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border-bottom: 1px solid $teritary-color;
 }
-.about div {
-  height: 40%;
+
+.about .secondaryPic {
+  position: relative;
+  width: 100%;
+  height: 300px;
 }
 .about .testPhoto {
-  height: 300px;
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
-.about h2 {
-  font-size: 25px;
+
+.about .overlay {
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.about h3 {
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
 }
 .about p {
   font-size: 15px;
+  font-style: italic;
 }
 
 /* Activities.styling */
@@ -122,7 +124,6 @@
   padding-left: 0;
 }
 .activities li {
-  margin-top: 40px;
   margin-bottom: 40px;
 }
 .activities .testPhoto {
@@ -139,14 +140,10 @@
 
 .header {
   position: absolute;
-  // top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  // align-items: center;
-  //padding: 1rem;
-  // background: transparent; /* Ensuring the header is clear */
-  z-index: 10; /* Making sure the header is above the background image */
+  z-index: 10;
 }
 .logo,
 .hamburger {
@@ -208,10 +205,4 @@
       text-align: left;
     }
   }
-  // .activity {
-  //   color: white;
-  //   font-size: 20px;
-  //   font-weight: normal;
-  //   margin: 5px;
-  // }
 }

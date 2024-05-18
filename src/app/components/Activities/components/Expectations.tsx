@@ -17,7 +17,7 @@ const Expectations = () => {
     },
     {
       activity: "Worship",
-      image: "/campworshipExample.jpg",
+      image: "/worshipExample.jpg",
       description:
         "Experience powerful worship sessions surrounded by the beauty of nature.",
     },
