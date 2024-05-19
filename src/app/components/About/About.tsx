@@ -7,9 +7,9 @@ const About = () => {
       <div>
         <h3>Matthew 13:44</h3>
         <p>
-          "The kingdom of heaven is like treasure hidden in a field, which a man
-          found and covered up. Then in his joy he goes and sells all that he
-          has and buys that field."
+          &quot;The kingdom of heaven is like treasure hidden in a field, which
+          a man found and covered up. Then in his joy he goes and sells all that
+          he has and buys that field.&quot;
         </p>
         {/* <h2>
           Experience spiritual growth, build community, and have fun at our
