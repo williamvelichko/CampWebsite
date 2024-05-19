@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../../page.module.scss";
+import Image from "next/image";
 
 const Expectations = () => {
   const expectData = [
@@ -45,7 +46,13 @@ const Expectations = () => {
     <div className={styles.expectations}>
       {expectData.map((item, index) => (
         <div className={styles.expectationItem} key={index}>
-          <img src={item.image} alt={item.activity} className={styles.image} />
+          <Image
+            src={item.image}
+            alt={item.activity}
+            layout="fill"
+            objectFit="cover"
+            loading="eager"
+          />
           <div className={styles.overlay}>
             <div className={styles.description}>
               <h5 className={styles.activity}>{item.activity}</h5>
