@@ -6,7 +6,7 @@ import Image from "next/image";
 export const MainSection = () => {
   return (
     <div className={styles.hero}>
-      <Header />
+      {/* <Header /> */}
       <div className={styles.imageWrapper}>
         <Image
           src="/mountainExample.jpg"
@@ -17,8 +17,9 @@ export const MainSection = () => {
         />
       </div>
       <div className={styles.overlay}>
-        <h1 className={styles.title}>Kingdom Of God</h1>
-        <p>Join us on an unforgettable Camp</p>
+        <h1 className={styles.title}>Bible Camp 2024</h1>
+        <h3 className={styles.topic}>Kingdom Of God</h3>
+        <p className={styles.titleSub}>Join us on an unforgettable Camp</p>
         <a
           href="https://buy.stripe.com/test_3cs1783Fx4HZ6iccMM"
           className={styles.registerButton}

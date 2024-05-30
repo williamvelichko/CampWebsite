@@ -11,8 +11,8 @@ const Activities = () => {
           <h3>Camp Dates and Schedule</h3>
           <p>
             Our camp runs from August 14th to August 18th. We have a jam-packed
-            schedule filled with exciting activities, team building exercises,
-            and inspiring guest speakers.
+            schedule filled with exciting activities and a great oppurtunity to
+            build great friendships!
           </p>
         </li>
         <li>
@@ -27,7 +27,6 @@ const Activities = () => {
 
         <Expectations />
       </ul>
-      {/* <img src="/youthCampSunset.jpg" alt="test" className={styles.testPhoto} /> */}
     </section>
   );
 };

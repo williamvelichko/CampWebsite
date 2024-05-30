@@ -43,9 +43,30 @@
 }
 
 .title {
-  font-size: 36px;
+  font-size: 3rem;
   margin-bottom: 20px;
   font-weight: normal;
+  @media (max-width: 400px) {
+    font-size: 2rem;
+  }
+}
+
+.topic {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: normal;
+  @media (max-width: 400px) {
+    font-size: 1.5rem;
+  }
+}
+
+.titleSub {
+  margin-top: 0;
+  font-style: italic;
+  font-size: 1rem;
+  @media (max-width: 400px) {
+    font-size: 0.8rem;
+  }
 }
 
 .registerButton {
