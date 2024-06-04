@@ -96,12 +96,21 @@
 
 /* About.styling */
 .about {
-  // min-height: 100vh;
   color: $accent-color;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   border-bottom: 1px solid $teritary-color;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  @media (min-width: 800px) {
+    div {
+      width: 50%;
+    }
+  }
 }
 
 .about .secondaryPic {
@@ -123,6 +132,7 @@
   font-size: 20px;
   font-weight: 600;
   font-style: italic;
+  margin: 0;
 }
 .about p {
   font-size: 15px;
@@ -133,9 +143,20 @@
 .activities {
   min-height: 100vh;
   color: $accent-color;
+
+  @media (min-width: 800px) {
+    ul {
+      align-items: center;
+    }
+
+    li {
+      width: 50%;
+    }
+  }
 }
 .activities h3 {
   font-size: 20px;
+  margin: 0;
 }
 .activities p {
   font-size: 15px;
@@ -143,9 +164,13 @@
 .activities ul {
   list-style: none;
   padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 50px;
 }
 .activities li {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .activities .testPhoto {
   height: 300px;
@@ -214,7 +239,7 @@
     margin: 5px;
 
     h5 {
-      font-size: 20px;
+      font-size: 23px;
       font-weight: normal;
       margin: 0;
     }
@@ -222,8 +247,13 @@
     p {
       margin: 0;
       font-weight: lighter;
-      font-size: 10px;
+      font-size: 13px;
       text-align: left;
+    }
+  }
+  @media (min-width: 800px) {
+    .expectationItem {
+      width: 50%;
     }
   }
 }
@@ -242,4 +272,8 @@
   border-radius: 10px;
   object-fit: cover;
   -webkit-overflow-scrolling: touch;
+
+  @media (min-width: 800px) {
+    width: 90%;
+  }
 }

@@ -24,9 +24,8 @@ const Activities = () => {
             lifelong friendships. Get ready for an amazing adventure!
           </p>
         </li>
-
-        <Expectations />
       </ul>
+      <Expectations />
     </section>
   );
 };

@@ -56,7 +56,6 @@ const Expectations = () => {
           <div className={styles.overlay}>
             <div className={styles.description}>
               <h5 className={styles.activity}>{item.activity}</h5>
-              <p className={styles.description}>{item.description}</p>
             </div>
           </div>
         </div>
