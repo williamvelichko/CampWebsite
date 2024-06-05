@@ -1,0 +1,23 @@
+// /* Header*/
+
+.header {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
+.logo,
+.hamburger {
+  margin: 5px;
+}
+.logo {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.hamburger {
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}

@@ -1,12 +1,10 @@
 import React from "react";
-import styles from "../../page.module.scss";
-import Header from "../Header/Header";
+import styles from "./styling/MainSection.module.scss";
 import Image from "next/image";
 
 export const MainSection = () => {
   return (
     <div className={styles.hero}>
-      {/* <Header /> */}
       <div className={styles.imageWrapper}>
         <Image
           src="/mountainExample.jpg"

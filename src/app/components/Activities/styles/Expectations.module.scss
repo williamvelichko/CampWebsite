@@ -1,0 +1,100 @@
+@import "../../../styles/styles.scss";
+
+/* Expectations.module.css */
+.expectationsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.expectations {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+
+  .expectationItem {
+    position: relative;
+    width: 100%;
+    height: 200px;
+  }
+
+  picture {
+    width: 100%;
+    height: 100%;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    color: #fff;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    margin: 5px;
+
+    h5 {
+      font-size: 23px;
+      font-weight: normal;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      font-weight: lighter;
+      font-size: 13px;
+      text-align: left;
+    }
+  }
+  @media (min-width: 800px) {
+    width: 80%;
+    .expectationItem {
+      width: 50%;
+    }
+  }
+}
+
+/* Activities.styling */
+
+.activities {
+  color: $accent-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activityContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  h3 {
+    margin: 0;
+    margin-top: 50px;
+    font-size: 24px;
+  }
+
+  @media (min-width: 800px) {
+    width: 50%;
+  }
+}

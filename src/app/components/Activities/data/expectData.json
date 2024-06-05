@@ -2,31 +2,37 @@
   {
     "activity": "Fellowship",
     "image": "/fellowship.jpg",
+    "imageWebp": "/fellowship.webp",
     "description": "Connect with fellow campers and build lifelong friendships around the campfire."
   },
   {
     "activity": "Preaching",
     "image": "/preaching2.jpg",
+    "imageWebp": "/preaching2.webp",
     "description": "Engage in thought-provoking sermons and gain spiritual insights from experienced speakers."
   },
   {
     "activity": "Worship",
     "image": "/worship.jpg",
+    "imageWebp": "/worship.webp",
     "description": "Experience powerful worship sessions surrounded by the beauty of nature."
   },
   {
     "activity": "Food",
     "image": "/food.jpg",
+    "imageWebp": "/food.webp",
     "description": "Savor delicious meals prepared with fresh ingredients, served with a side of community."
   },
   {
     "activity": "Summer Activities",
     "image": "/activity.jpg",
+    "imageWebp": "/activity.webp",
     "description": "Participate in a variety of outdoor adventures and recreational activities tailored for summer fun."
   },
   {
     "activity": "Surprise",
     "image": "/suprise.jpg",
+    "imageWebp": "/suprise.webp",
     "description": "Stay tuned for a special surprise event that promises excitement and unforgettable memories."
   }
 ]

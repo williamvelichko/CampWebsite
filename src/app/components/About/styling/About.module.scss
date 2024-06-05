@@ -1,0 +1,30 @@
+@import "../../../styles/styles.scss";
+
+/* About.styling */
+.about {
+  color: $accent-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-bottom: 1px solid $teritary-color;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  @media (min-width: 800px) {
+    div {
+      width: 50%;
+    }
+  }
+}
+
+.about h3 {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  margin: 0;
+}
+.about p {
+  font-style: italic;
+}
