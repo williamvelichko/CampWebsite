@@ -155,7 +155,7 @@
   }
 }
 .activities h3 {
-  font-size: 20px;
+  font-size: 24px;
   margin: 0;
 }
 .activities p {
@@ -207,6 +207,12 @@
 }
 
 /* Expectations.module.css */
+.expectationsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .expectations {
   display: flex;
   flex-wrap: wrap;
@@ -252,6 +258,7 @@
     }
   }
   @media (min-width: 800px) {
+    width: 80%;
     .expectationItem {
       width: 50%;
     }
@@ -274,6 +281,6 @@
   -webkit-overflow-scrolling: touch;
 
   @media (min-width: 800px) {
-    width: 90%;
+    width: 80%;
   }
 }

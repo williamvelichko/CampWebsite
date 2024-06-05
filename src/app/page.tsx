@@ -4,7 +4,7 @@ import About from "./components/About/About";
 import Activities from "./components/Activities/Activities";
 import Footer from "./components/Footer/Footer";
 import { Video } from "./components/Video/Video";
-
+import Schedule from "./components/Schedule/Schedule";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -12,6 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <About />
         <Video />
+        <Schedule />
         <Activities />
       </main>
       <Footer />
