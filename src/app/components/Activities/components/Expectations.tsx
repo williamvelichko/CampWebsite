@@ -43,7 +43,7 @@ const Expectations = () => {
           <div className={styles.expectationItem} key={index}>
             <picture>
               <source srcSet={item.imageWebp} type="image/webp" />
-              <source srcSet={item.image} type="image/jpeg" />
+              <source srcSet={item.image} type="image/jpg" />
               <Image
                 src={item.image}
                 alt={item.activity}
