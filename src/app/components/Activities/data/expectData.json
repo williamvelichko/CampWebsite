@@ -1,37 +1,37 @@
 [
   {
     "activity": "Fellowship",
-    "image": "/fellowship.jpg",
+    "image": "/fellowship.JPG",
     "imageWebp": "/fellowship.webp",
     "description": "Connect with fellow campers and build lifelong friendships around the campfire."
   },
   {
     "activity": "Preaching",
-    "image": "/preaching2.jpg",
+    "image": "/preaching2.JPG",
     "imageWebp": "/preaching2.webp",
     "description": "Engage in thought-provoking sermons and gain spiritual insights from experienced speakers."
   },
   {
     "activity": "Worship",
-    "image": "/worship.jpg",
+    "image": "/worship.JPG",
     "imageWebp": "/worship.webp",
     "description": "Experience powerful worship sessions surrounded by the beauty of nature."
   },
   {
     "activity": "Food",
-    "image": "/food.jpg",
+    "image": "/food.JPG",
     "imageWebp": "/food.webp",
     "description": "Savor delicious meals prepared with fresh ingredients, served with a side of community."
   },
   {
     "activity": "Summer Activities",
-    "image": "/activity.jpg",
+    "image": "/activity.JPG",
     "imageWebp": "/activity.webp",
     "description": "Participate in a variety of outdoor adventures and recreational activities tailored for summer fun."
   },
   {
     "activity": "Surprise",
-    "image": "/suprise.jpg",
+    "image": "/suprise.JPG",
     "imageWebp": "/suprise.webp",
     "description": "Stay tuned for a special surprise event that promises excitement and unforgettable memories."
   }
