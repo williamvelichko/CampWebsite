@@ -19,7 +19,7 @@
   },
   {
     "activity": "Food",
-    "image": "/food.JPG",
+    "image": "/campFood.JPG",
     "imageWebp": "/food.webp",
     "description": "Savor delicious meals prepared with fresh ingredients, served with a side of community."
   },
@@ -31,7 +31,7 @@
   },
   {
     "activity": "Surprise",
-    "image": "/suprise.JPG",
+    "image": "/campSuprise.JPG",
     "imageWebp": "/suprise.webp",
     "description": "Stay tuned for a special surprise event that promises excitement and unforgettable memories."
   }
