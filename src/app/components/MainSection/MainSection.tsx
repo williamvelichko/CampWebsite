@@ -25,6 +25,9 @@ export const MainSection = () => {
           Register
         </a>
       </div>
+      <div className={styles.bounceArrow}>
+        <span>&#8595;</span>
+      </div>
     </div>
   );
 };
