@@ -4,7 +4,14 @@ import styles from "./styles/Video.module.scss";
 export const Video = () => {
   return (
     <section className={styles.videoSection}>
-      <video autoPlay loop playsInline preload="auto" className={styles.video}>
+      <video
+        controls
+        autoPlay
+        loop
+        playsInline
+        preload="auto"
+        className={styles.video}
+      >
         <source src="/camp_invite_4.webm" type="video/webm" />
         <source src="/camp_invite_4.mp4" type="video/mp4" />
         <track
