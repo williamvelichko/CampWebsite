@@ -19,7 +19,7 @@ export const MainSection = () => {
         <h3 className={styles.topic}>Kingdom Of God</h3>
         <p className={styles.titleSub}>Join us on an unforgettable Camp</p>
         <a
-          href="https://buy.stripe.com/test_3cs1783Fx4HZ6iccMM"
+          href="https://buy.stripe.com/6oE4hJaxT010bFCfYY"
           className={styles.registerButton}
         >
           Register
