@@ -10,6 +10,19 @@ const FAQ = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const renderAnswer = (answer) => {
+    if (Array.isArray(answer)) {
+      return (
+        <ul>
+          {answer.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+      );
+    }
+    return <p>{answer}</p>;
+  };
+
   return (
     <div className={styles.faqContainer}>
       <section className={styles.faqSection}>
@@ -26,7 +39,7 @@ const FAQ = () => {
               </span>
             </div>
             {activeIndex === index && (
-              <div className={styles.answer}>{item.answer}</div>
+              <div className={styles.answer}>{renderAnswer(item.answer)}</div>
             )}
           </div>
         ))}

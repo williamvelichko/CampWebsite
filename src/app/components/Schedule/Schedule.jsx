@@ -8,9 +8,10 @@ const Schedule = () => {
       <section className={styles.titleSection}>
         <h3 className={styles.scheduleTitle}>Camp Dates and Schedule</h3>
         <p>
-          Our camp runs from August 14th untill August 18th. We have a
-          jam-packed schedule filled with exciting activities and a great
-          oppurtunity to build great friendships!
+          Our camp runs from <strong>August 14th</strong> until{" "}
+          <strong>August 18th</strong>. We have a jam-packed schedule filled
+          with exciting activities and a great opportunity to build great
+          friendships!
         </p>
       </section>
       <div className={styles.scheduleContainer}>

@@ -5,7 +5,21 @@
   },
   {
     "question": "What should I bring to camp?",
-    "answer": "You should bring, camping chair, comfortable clothing, swimming apparel, a BIBLE, a notebook, and any personal items you may need. Additionally, please bring everything you need for a bed, including a pillow, blanket, or sleeping bag. Don't forget toiletries, sunscreen, mosquito spray, a hat, and any necessary medications. All Guys will be staying in tents so all male campers must bring a tent. If you are unable to bring a tent, please reach out to us for assistance and alternative arrangements."
+    "answer": [
+      "Camping chair",
+      "Comfortable clothing",
+      "Swimming apparel",
+      "A BIBLE",
+      "A notebook",
+      "Any personal items you may need",
+      "Everything you need for a bed, including a pillow, blanket, or sleeping bag",
+      "Toiletries",
+      "Sunscreen",
+      "Mosquito spray",
+      "A hat",
+      "Any necessary medications",
+      "All guys will be staying in tents, so all male campers must bring a tent. If you are unable to bring a tent, please reach out to us for assistance and alternative arrangements."
+    ]
   },
   {
     "question": "Are there any rules and regulations?",
