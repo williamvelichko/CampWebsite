@@ -2,20 +2,14 @@
 
 .videoSection {
   text-align: center;
-  // height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
-  border-radius: 10px;
-  @media (min-width: 800px) {
-    background-color: #fff;
-  }
 }
 
 .video {
   width: 100%;
-  //height: auto;
+  height: auto;
   border-radius: 10px;
   object-fit: contain;
   -webkit-overflow-scrolling: touch;
