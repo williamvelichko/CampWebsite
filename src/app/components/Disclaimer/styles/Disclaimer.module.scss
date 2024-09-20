@@ -48,12 +48,12 @@
 .titleSub {
   margin-top: 0;
   font-style: italic;
-  font-size: 1.25rem;
-  color: #ffffff;
+  font-size: 1.4rem;
+  color: rgb(255, 169, 154);
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   @media (max-width: 400px) {
-    font-size: 0.8rem;
+    font-size: 1.3rem;
   }
 }
