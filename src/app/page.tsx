@@ -6,11 +6,13 @@ import Footer from "./components/Footer/Footer";
 import { Video } from "./components/Video/Video";
 import Schedule from "./components/Schedule/Schedule";
 import FAQ from "./components/FAQ/FAQ";
+import { Disclaimer } from "./components/Disclaimer/Disclaimer";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <MainSection />
+      <Disclaimer />
+      {/* <MainSection />
       <main className={styles.main}>
         <About />
         <Video />
@@ -18,7 +20,7 @@ export default function Home() {
         <Activities />
       </main>
       <FAQ />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
