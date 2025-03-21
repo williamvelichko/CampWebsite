@@ -6,10 +6,12 @@ import Footer from "./components/Footer/Footer";
 import { Video } from "./components/Video/Video";
 import Schedule from "./components/Schedule/Schedule";
 import FAQ from "./components/FAQ/FAQ";
+import Header from "./components/Header/Header";
 
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Header />
       <MainSection />
       <main className={styles.main}>
         <About />

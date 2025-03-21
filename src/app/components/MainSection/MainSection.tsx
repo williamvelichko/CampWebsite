@@ -15,8 +15,8 @@ export const MainSection = () => {
         />
       </div>
       <div className={styles.overlay}>
-        <h1 className={styles.title}>Bible Camp 2024</h1>
-        <h3 className={styles.topic}>Kingdom Of God</h3>
+        {/* <h1 className={styles.title}>Bible Camp 2025</h1> */}
+        <h3 className={styles.topic}>Glory Of God</h3>
         <p className={styles.titleSub}>Join us on an unforgettable Camp</p>
         <a
           href="https://buy.stripe.com/6oE4hJaxT010bFCfYY"
