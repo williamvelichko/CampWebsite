@@ -11,7 +11,7 @@ import Header from "./components/Header/Header";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Header />
+      {/* <Header /> */}
       <MainSection />
       <main className={styles.main}>
         <About />
@@ -20,7 +20,7 @@ export default function Home() {
         <Activities />
       </main>
       <FAQ />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

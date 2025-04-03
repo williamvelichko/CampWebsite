@@ -2,31 +2,36 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles/Header.module.scss";
 import Navbar from "./components/Navbar";
+import { usePathname } from "next/navigation";
 
 const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false); // State for menu open/close
+  const pathname = usePathname();
+  const [isAtTop, setIsAtTop] = useState<boolean>(true);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const isHomepage = pathname === "/";
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle the menu state
+    setIsMenuOpen(!isMenuOpen);
   };
+
   useEffect(() => {
+    if (!isHomepage) {
+      setIsAtTop(false);
+      return;
+    }
+
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true); // Add the "scrolled" class
-      } else {
-        setIsScrolled(false); // Remove the "scrolled" class
-      }
+      setIsAtTop(window.scrollY === 0);
     };
 
-    window.addEventListener("scroll", handleScroll); // Add scroll event listener
-    return () => {
-      window.removeEventListener("scroll", handleScroll); // Clean up the listener
-    };
-  }, []);
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHomepage]);
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
+    <header className={`${styles.header} ${!isAtTop ? styles.scrolled : ""}`}>
       <div className={styles.logo}>BibleCamp</div>
       <div className={styles.hamburger} onClick={toggleMenu}>
         ☰

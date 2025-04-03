@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styling/MainSection.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 export const MainSection = () => {
   return (
@@ -18,12 +19,13 @@ export const MainSection = () => {
         {/* <h1 className={styles.title}>Bible Camp 2025</h1> */}
         <h3 className={styles.topic}>Glory Of God</h3>
         <p className={styles.titleSub}>Join us on an unforgettable Camp</p>
-        <a
-          href="https://buy.stripe.com/6oE4hJaxT010bFCfYY"
+        <Link
+          href="/registration"
+          // href="https://buy.stripe.com/6oE4hJaxT010bFCfYY"
           className={styles.registerButton}
         >
           Register
-        </a>
+        </Link>
       </div>
       <div className={styles.bounceArrow}>
         <span>&#8595;</span>

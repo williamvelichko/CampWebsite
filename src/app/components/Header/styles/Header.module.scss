@@ -20,7 +20,7 @@
   font-size: 1.5rem;
   color: white; // White text by default
   transition: color 0.3s ease; // Smooth transition for text color
-  padding: 5px;
+  padding: 1rem;
 }
 
 .header.scrolled .logo {
@@ -33,7 +33,7 @@
   display: none; // Hide on desktop by default
   color: white; // White icon by default
   transition: color 0.3s ease; // Smooth transition for icon color
-  padding: 5px;
+  padding: 1rem;
 }
 
 .header.scrolled .hamburger {
