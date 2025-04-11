@@ -16,10 +16,10 @@ export default function Home() {
       <main className={styles.main}>
         <About />
         <Video />
-        <Schedule />
+        {/* <Schedule /> */}
         <Activities />
       </main>
-      <FAQ />
+      {/* <FAQ /> */}
       {/* <Footer /> */}
     </div>
   );

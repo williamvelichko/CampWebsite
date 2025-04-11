@@ -1,16 +1,19 @@
 "use client";
 import React from "react";
-import styles from "../styles/Navbar.module.scss";
+import styles from "../styles/MobileNavbar.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // Define the props interface for Navbar
-interface NavbarProps {
+interface MobileNavbarProps {
   isMenuOpen: boolean;
   toggleMenu: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, toggleMenu }) => {
+const MobileNavbar: React.FC<MobileNavbarProps> = ({
+  isMenuOpen,
+  toggleMenu,
+}) => {
   const pathname = usePathname();
 
   const links = [
@@ -51,4 +54,4 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, toggleMenu }) => {
   );
 };
 
-export default Navbar;
+export default MobileNavbar;
