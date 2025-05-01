@@ -4,7 +4,8 @@ import styles from "./styles/Registration.module.scss";
 
 const Registration = () => {
   // External URL for registration
-  const REGISTRATION_URL = "https://supersplash.com/your-camp-registration";
+  const REGISTRATION_URL =
+    "https://subsplash.com/bbc-ca/lb/ev/+pfw5ftp/register";
 
   return (
     <>

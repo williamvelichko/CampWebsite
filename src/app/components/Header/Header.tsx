@@ -41,7 +41,9 @@ const Header = () => {
 
   return (
     <header className={`${styles.header} ${!isAtTop ? styles.scrolled : ""}`}>
-      <div className={styles.logo}>BibleCamp</div>
+      <div className={styles.logo}>
+        <img src={"/BibleCampLogo2.png"} className={styles.logoImage} />
+      </div>
 
       {isMobileView ? (
         <>

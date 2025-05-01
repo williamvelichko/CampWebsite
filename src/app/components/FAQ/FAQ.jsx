@@ -24,26 +24,28 @@ const FAQ = () => {
   };
 
   return (
-    <div className={styles.faqContainer}>
-      <section className={styles.faqSection}>
-        <h2>Frequently Asked Questions</h2>
+    <div className={styles.mainContainer}>
+      <section className={styles.titleSection}>
+        <h3 className={styles.faqTitle}>Frequently Asked Questions</h3>
+        <p className={styles.faqDescription}>
+          Find answers to the most common questions about our camp.
+        </p>
+      </section>
+      <div className={styles.faqContainer}>
         {faqData.map((item, index) => (
-          <div key={index} className={styles.faqItem}>
-            <div
-              className={styles.question}
-              onClick={() => toggleAnswer(index)}
-            >
+          <div key={index} className={styles.faqSection}>
+            <h3 className={styles.question} onClick={() => toggleAnswer(index)}>
               {item.question}
               <span className={styles.toggleIcon}>
                 {activeIndex === index ? "-" : "+"}
               </span>
-            </div>
+            </h3>
             {activeIndex === index && (
               <div className={styles.answer}>{renderAnswer(item.answer)}</div>
             )}
           </div>
         ))}
-      </section>
+      </div>
     </div>
   );
 };
