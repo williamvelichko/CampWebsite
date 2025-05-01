@@ -35,9 +35,8 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({
         </button>
         <ul>
           {links.map((link) => (
-            <li>
+            <li key={link.href}>
               <Link
-                key={link.href}
                 href={link.href}
                 className={`${styles.navLink} ${
                   pathname === link.href ? styles.active : ""
