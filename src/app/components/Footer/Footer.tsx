@@ -1,17 +1,22 @@
 import React from "react";
 import styles from "./styles/Footer.module.scss";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.leftColumn}>
-          <img
-            src={"/bibleCampLogo2.png"}
+          <Image
+            src={"/NewBibleCampLogo.png"}
             alt="Bible Camp Logo"
             className={styles.logoImage}
+            width={120}
+            height={120}
+            priority
           />
+
           <p>Bible Camp is a ministry of Bible Baptist Church</p>
           <address>2495 Kings Hill Rd, Colfax, CA 95713</address>
           <p>Phone: (916) 882-6630</p>

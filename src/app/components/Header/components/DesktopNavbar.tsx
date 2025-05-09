@@ -14,8 +14,8 @@ const DesktopNavbar: React.FC<DesktopNavbarProps> = ({ isAtTop }) => {
   const links = [
     { href: "/", label: "Home" },
     { href: "/schedule", label: "Schedule" },
-    { href: "/registration", label: "Register" },
     { href: "/faq", label: "FAQ" },
+    { href: "/registration", label: "Register" },
   ];
 
   return (

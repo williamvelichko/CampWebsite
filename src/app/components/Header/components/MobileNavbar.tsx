@@ -4,7 +4,6 @@ import styles from "../styles/MobileNavbar.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// Define the props interface for Navbar
 interface MobileNavbarProps {
   isMenuOpen: boolean;
   toggleMenu: () => void;
@@ -19,8 +18,8 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({
   const links = [
     { href: "/", label: "Home" },
     { href: "/schedule", label: "Schedule" },
-    { href: "/registration", label: "Register" },
     { href: "/faq", label: "FAQ" },
+    { href: "/registration", label: "Register" },
   ];
   return (
     <>

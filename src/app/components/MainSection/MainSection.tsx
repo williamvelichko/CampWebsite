@@ -31,7 +31,7 @@ export const MainSection = () => {
           layout="fill"
           className={styles.image}
           objectFit="cover"
-          loading="eager"
+          priority
         />
       </div>
       <div className={styles.overlay}>

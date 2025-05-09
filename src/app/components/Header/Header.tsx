@@ -4,6 +4,8 @@ import styles from "./styles/Header.module.scss";
 import { usePathname } from "next/navigation";
 import DesktopNavbar from "./components/DesktopNavbar";
 import MobileNavbar from "./components/MobileNavbar";
+import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   const pathname = usePathname();
@@ -42,7 +44,16 @@ const Header = () => {
   return (
     <header className={`${styles.header} ${!isAtTop ? styles.scrolled : ""}`}>
       <div className={styles.logo}>
-        <img src={"/bibleCampLogo2.png"} className={styles.logoImage} />
+        <Link href="/">
+          <Image
+            alt="Bible Camp Logo"
+            width={120}
+            height={120}
+            priority
+            src="/NewBibleCampLogo.png"
+            className={styles.logoImage}
+          />
+        </Link>
       </div>
 
       {isMobileView ? (
