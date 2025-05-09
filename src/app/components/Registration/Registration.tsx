@@ -3,45 +3,36 @@ import Head from "next/head";
 import styles from "./styles/Registration.module.scss";
 
 const Registration = () => {
-  // External URL for registration
   const REGISTRATION_URL =
     "https://subsplash.com/bbc-ca/lb/ev/+pfw5ftp/register";
 
   return (
-    <>
-      <Head>
-        <title>Camp Registration</title>
-        <meta name="description" content="Register for our upcoming camp" />
-      </Head>
+    <div className={styles.divContainer}>
+      <div className={styles.header}>
+        <h1 className={styles.title}> Register Today for Bible Camp 2025!</h1>
+      </div>
+      <div className={styles.deadlineSection}>
+        <h2 className={styles.deadlineTitle}>Important Dates</h2>
+        <ul className={styles.deadlineList}>
+          <li>
+            <strong>Registration Deadline:</strong> July 13, 2025
+          </li>
+          <li>
+            <strong>No Refunds After:</strong> August 1, 2025
+          </li>
+        </ul>
+      </div>
 
-      <main className={styles.mainContainer}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Camp Registration</h1>
-          <p className={styles.subtitle}>
-            Join us for an unforgettable experience!
-          </p>
-        </header>
-
-        <section className={styles.pricingSection}>
-          <h2 className={styles.price}>$100 General Registration</h2>
-          <p className={styles.priceDescription}>
-            Includes all activities and meals
-          </p>
-        </section>
-
-        <section className={styles.ctaSection}>
-          <a
-            href={REGISTRATION_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.registerButton}
-            aria-label="Register for camp on Supersplash"
-          >
-            Register Now
-          </a>
-        </section>
-      </main>
-    </>
+      <div className={styles.ctaSection}>
+        <iframe
+          src={REGISTRATION_URL}
+          title="Camp Registration Form"
+          className={styles.iframe}
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
+      </div>
+    </div>
   );
 };
 

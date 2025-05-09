@@ -1,15 +1,15 @@
 [
   {
+    "activity": "Preaching ",
+    "image": "/preaching2.JPG",
+    "imageWebp": "/preaching2.webp",
+    "description": "Engage in thought-provoking sermons and gain spiritual insights from experienced speakers."
+  },
+  {
     "activity": "Fellowship",
     "image": "/Fellowship.JPG",
     "imageWebp": "/Fellowship.webp",
     "description": "Connect with fellow campers and build lifelong friendships around the campfire."
-  },
-  {
-    "activity": "Preaching",
-    "image": "/preaching2.JPG",
-    "imageWebp": "/preaching2.webp",
-    "description": "Engage in thought-provoking sermons and gain spiritual insights from experienced speakers."
   },
   {
     "activity": "Worship",
@@ -18,21 +18,9 @@
     "description": "Experience powerful worship sessions surrounded by the beauty of nature."
   },
   {
-    "activity": "Food",
+    "activity": "Prayer",
     "image": "/campFood.JPG",
     "imageWebp": "/food.webp",
     "description": "Savor delicious meals prepared with fresh ingredients, served with a side of community."
-  },
-  {
-    "activity": "Summer Activities",
-    "image": "/activity.JPG",
-    "imageWebp": "/activity.webp",
-    "description": "Participate in a variety of outdoor adventures and recreational activities tailored for summer fun."
-  },
-  {
-    "activity": "Surprise",
-    "image": "/campSuprise.JPG",
-    "imageWebp": "/suprise.webp",
-    "description": "Stay tuned for a special surprise event that promises excitement and unforgettable memories."
   }
 ]

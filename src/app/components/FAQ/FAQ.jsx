@@ -20,7 +20,8 @@ const FAQ = () => {
         </ul>
       );
     }
-    return <p>{answer}</p>;
+
+    return <p dangerouslySetInnerHTML={{ __html: answer }} />;
   };
 
   return (

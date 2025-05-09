@@ -1,7 +1,7 @@
 [
   {
     "question": "What is the camp address?",
-    "answer": "The camp is located at 2495 Kings Hill Rd, Colfax, CA 95713 - DISCLAIMER: 'For your safety we recommend you to drive through Foresthill Rd instead of Colfax'"
+    "answer": "The camp is located at <a href='https://www.google.com/maps?q=2495+Kings+Hill+Rd,+Colfax,+CA+95713' target='_blank' rel='noopener noreferrer'>2495 Kings Hill Rd, Colfax, CA 95713</a> - <strong>DISCLAIMER:</strong> For your safety we recommend you to drive through Foresthill Rd instead of Colfax."
   },
   {
     "question": "What should I bring to camp?",
