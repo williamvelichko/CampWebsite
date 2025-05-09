@@ -6,21 +6,34 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const MainSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [imageSrc, setImageSrc] = useState("/GloryOfGodVert.webp");
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 800);
+    const updateImageSrc = () => {
+      const isMobile = window.innerWidth <= 800;
+
+      const webpSupported =
+        document
+          .createElement("canvas")
+          .toDataURL("image/webp")
+          .indexOf("data:image/webp") === 0;
+
+      if (webpSupported) {
+        setImageSrc(
+          isMobile ? "/GloryOfGodVert.webp" : "/GloryOfGodHorizontal.webp"
+        );
+      } else {
+        setImageSrc(
+          isMobile ? "/GloryOfGodVert.jpg" : "/GloryOfGodHorizontal.jpg"
+        );
+      }
     };
 
-    handleResize(); // Set initial value
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    updateImageSrc();
+    window.addEventListener("resize", updateImageSrc);
 
-  const imageSrc = isMobile
-    ? "/GloryOfGodVert.jpg"
-    : "/GloryOfGodHorizontal.jpg";
+    return () => window.removeEventListener("resize", updateImageSrc);
+  }, []);
 
   return (
     <div className={styles.hero}>
