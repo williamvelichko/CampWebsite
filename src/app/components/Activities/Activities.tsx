@@ -11,8 +11,8 @@ const Activities = () => {
           <p>
             At our camp, everything we do is centered around worshiping God in
             Spirit and in Truth. You can expect to be equipped and encouraged
-            through the preaching of God's Word, joyful worship through singing,
-            meaningful fellowship, and devoted prayer.
+            through the preaching of God&apos;s Word, joyful worship through
+            singing, meaningful fellowship, and devoted prayer.
           </p>
         </div>
       </section>
