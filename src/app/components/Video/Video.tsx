@@ -12,13 +12,13 @@ export const Video = () => {
     const updateVideoSource = () => {
       if (window.innerWidth < 600) {
         setVideoSrc({
-          webm: "/camp_invite_vertical.webm",
-          mp4: "/camp_invite_vertical.mp4",
+          webm: "/campvideo2025V.webm",
+          mp4: "/campvideo2025V.mp4",
         });
       } else {
         setVideoSrc({
-          webm: "/camp_invite_horizontal.webm",
-          mp4: "/camp_invite_horizontal.mp4",
+          webm: "/campvideo2025H.webm",
+          mp4: "/campvideo2025H.mp4",
         });
       }
     };
