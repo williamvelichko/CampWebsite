@@ -18,6 +18,8 @@
     position: relative;
     width: 100%;
     height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
   }
 
   .overlay {
@@ -40,8 +42,7 @@
     flex-direction: column;
     align-items: start;
     justify-content: space-around;
-    margin: 10px;
-    height: 25%;
+    padding: 15px;
 
     h5 {
       font-size: 30px;

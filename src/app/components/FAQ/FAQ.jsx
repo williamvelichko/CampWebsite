@@ -35,12 +35,17 @@ const FAQ = () => {
       <div className={styles.faqContainer}>
         {faqData.map((item, index) => (
           <div key={index} className={styles.faqSection}>
-            <h3 className={styles.question} onClick={() => toggleAnswer(index)}>
-              {item.question}
+            <div className={styles.questionContainer}>
+              <h3
+                className={styles.question}
+                onClick={() => toggleAnswer(index)}
+              >
+                {item.question}
+              </h3>
               <span className={styles.toggleIcon}>
                 {activeIndex === index ? "-" : "+"}
               </span>
-            </h3>
+            </div>
             {activeIndex === index && (
               <div className={styles.answer}>{renderAnswer(item.answer)}</div>
             )}
