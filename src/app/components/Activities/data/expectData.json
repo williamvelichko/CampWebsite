@@ -1,38 +1,26 @@
 [
   {
+    "activity": "Preaching",
+    "image": "/campPreaching2025.jpg",
+    "imageWebp": "/campPreaching2025.webp",
+    "description": "Be challenged and encouraged through passionate, Bible-centered preaching that speaks to the heart and mind."
+  },
+  {
     "activity": "Fellowship",
     "image": "/Fellowship.JPG",
     "imageWebp": "/Fellowship.webp",
-    "description": "Connect with fellow campers and build lifelong friendships around the campfire."
-  },
-  {
-    "activity": "Preaching",
-    "image": "/preaching2.JPG",
-    "imageWebp": "/preaching2.webp",
-    "description": "Engage in thought-provoking sermons and gain spiritual insights from experienced speakers."
+    "description": "Grow closer to other believers through shared experiences, deep conversations, and joyful moments together."
   },
   {
     "activity": "Worship",
-    "image": "/worship.JPG",
-    "imageWebp": "/worship.webp",
-    "description": "Experience powerful worship sessions surrounded by the beauty of nature."
+    "image": "/campWorship2025.jpg",
+    "imageWebp": "/campWorship2025.jpg",
+    "description": "Lift your voice in heartfelt worship as we glorify God through music, surrounded by His creation."
   },
   {
-    "activity": "Food",
-    "image": "/campFood.JPG",
-    "imageWebp": "/food.webp",
-    "description": "Savor delicious meals prepared with fresh ingredients, served with a side of community."
-  },
-  {
-    "activity": "Summer Activities",
-    "image": "/activity.JPG",
-    "imageWebp": "/activity.webp",
-    "description": "Participate in a variety of outdoor adventures and recreational activities tailored for summer fun."
-  },
-  {
-    "activity": "Surprise",
-    "image": "/campSuprise.JPG",
-    "imageWebp": "/suprise.webp",
-    "description": "Stay tuned for a special surprise event that promises excitement and unforgettable memories."
+    "activity": "Prayer",
+    "image": "/campPrayer2025.JPG",
+    "imageWebp": "/campPrayer2025.webp",
+    "description": "Find quiet moments to seek God through personal and group prayer, drawing closer to Him with purpose and peace."
   }
 ]

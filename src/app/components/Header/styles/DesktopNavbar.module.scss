@@ -1,0 +1,66 @@
+@import "../../../styles/styles.scss";
+.nav {
+  display: flex;
+  align-items: center;
+
+  // Default state (transparent header)
+  .navLink {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.active {
+      font-weight: 600;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+      }
+    }
+  }
+
+  // Scrolled state (white header)
+  &.scrolled {
+    .navLink {
+      color: black;
+
+      &:hover {
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      &.active {
+        color: $accent-color; // Example active color
+
+        &::after {
+          background-color: currentColor;
+        }
+      }
+    }
+  }
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-right: 1rem;
+  gap: 2rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+}

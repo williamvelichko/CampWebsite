@@ -9,9 +9,10 @@ const Activities = () => {
         <div className={styles.activityContent}>
           <h3>What to Expect</h3>
           <p>
-            At our camp, you can expect a safe and inclusive environment,
-            delicious meals, comfortable accommodations, and a chance to make
-            lifelong friendships. Get ready for an amazing adventure!
+            At our camp, everything we do is centered around worshiping God in
+            Spirit and in Truth. You can expect to be equipped and encouraged
+            through the preaching of God&apos;s Word, joyful worship through
+            singing, meaningful fellowship, and devoted prayer.
           </p>
         </div>
       </section>
