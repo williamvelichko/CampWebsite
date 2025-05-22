@@ -15,7 +15,7 @@ const Registration = () => {
         <h2 className={styles.deadlineTitle}>Important Dates</h2>
         <ul className={styles.deadlineList}>
           <li>
-            <strong>Registration Deadline:</strong> July 13, 2025
+            <strong>Registration Deadline:</strong> July 1, 2025
           </li>
           <li>
             <strong>No Refunds After:</strong> August 1, 2025
