@@ -10,13 +10,14 @@
     { "time": "08:00 PM", "activity": "Evening Church" },
     { "time": "09:00 PM", "activity": "Evening Activities" },
     { "time": "10:30 PM", "activity": "Tea Fellowship" },
-    { "time": "11:30 PM", "activity": "Quiet Time (Not Lights Out)" }
+    { "time": "12:59 PM", "activity": "Sleep Time" }
   ],
   "arrival": [
     { "time": "04:00 PM", "activity": "Drive In" },
     { "time": "07:00 PM", "activity": "Dinner" },
     { "time": "08:00 PM", "activity": "Welcome Service" },
-    { "time": "09:00 PM", "activity": "Tea Fellowship" }
+    { "time": "09:00 PM", "activity": "Tea Fellowship" },
+    { "time": "12:59 PM", "activity": "Sleep Time" }
   ],
   "departure": [
     { "time": "09:00 AM", "activity": "Breakfast" },
