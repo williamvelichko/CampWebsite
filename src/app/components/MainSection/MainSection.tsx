@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styling/MainSection.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { isTemporaryModeEnabled } from "../../config/site";
 
 export const MainSection = () => {
   const [imageSrc, setImageSrc] = useState("/GloryOfGodVert.webp");
@@ -49,9 +50,13 @@ export const MainSection = () => {
       </div>
       <div className={styles.overlay}>
         <div className={styles.textContainer}>
-          <Link href="/registration" className={styles.registerButton}>
-            Register
-          </Link>
+          {isTemporaryModeEnabled ? (
+            <div className={styles.comingSoonBadge}>Registration opens later</div>
+          ) : (
+            <Link href="/registration" className={styles.registerButton}>
+              Register
+            </Link>
+          )}
           <div className={styles.bounceArrow}>
             <span>&#8595;</span>
           </div>

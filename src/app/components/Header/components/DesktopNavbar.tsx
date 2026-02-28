@@ -3,6 +3,7 @@ import React from "react";
 import styles from "../styles/DesktopNavbar.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { primaryNavLinks } from "../../../config/site";
 
 interface DesktopNavbarProps {
   isAtTop: boolean;
@@ -11,17 +12,10 @@ interface DesktopNavbarProps {
 const DesktopNavbar: React.FC<DesktopNavbarProps> = ({ isAtTop }) => {
   const pathname = usePathname();
 
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/schedule", label: "Schedule" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/registration", label: "Register" },
-  ];
-
   return (
     <nav className={`${styles.nav} ${!isAtTop ? styles.scrolled : ""}`}>
       <ul className={styles.navList}>
-        {links.map((link) => (
+        {primaryNavLinks.map((link) => (
           <li key={link.href} className={styles.navItem}>
             <Link
               href={link.href}

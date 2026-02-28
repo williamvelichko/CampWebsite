@@ -1,0 +1,48 @@
+@import "../../../styles/styles.scss";
+
+.noticeSection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 3.5rem auto;
+}
+
+.noticeCard {
+  width: min(720px, 100%);
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(20, 33, 61, 0.12);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 245, 245, 0.98)),
+    $primary-color;
+  box-shadow: 0 18px 40px rgba(20, 33, 61, 0.08);
+  text-align: center;
+
+  @media (min-width: 800px) {
+    padding: 3rem;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: #89650c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: $accent-color;
+  font-size: 2rem;
+  line-height: 1.15;
+}
+
+.description {
+  margin: 1rem auto 0;
+  max-width: 38rem;
+  color: rgba(20, 33, 61, 0.82);
+  font-size: 1rem;
+  line-height: 1.7;
+}

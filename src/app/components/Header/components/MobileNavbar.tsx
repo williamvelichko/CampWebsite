@@ -3,6 +3,7 @@ import React from "react";
 import styles from "../styles/MobileNavbar.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { primaryNavLinks } from "../../../config/site";
 
 interface MobileNavbarProps {
   isMenuOpen: boolean;
@@ -14,13 +15,6 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({
   toggleMenu,
 }) => {
   const pathname = usePathname();
-
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/schedule", label: "Schedule" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/registration", label: "Register" },
-  ];
   return (
     <>
       <div
@@ -33,7 +27,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({
           ✕
         </button>
         <ul>
-          {links.map((link) => (
+          {primaryNavLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
