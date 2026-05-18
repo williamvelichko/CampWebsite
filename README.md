@@ -44,7 +44,7 @@ Use `.env.example` as the starting point for local configuration.
 - The 2026 design system uses Cormorant Garamond for display typography, DM Sans for interface/body text, warm cream backgrounds, dark navy panels, and gold accents.
 - The video section uses the horizontal `public/BibleCamp2026PromoV3.mp4` promo video at every breakpoint.
 - The schedule, FAQ, and activity cards load their content from local JSON files so non-layout content updates can be made without editing component markup.
-- The schedule page uses the 2026 editorial timeline design, with day badges, a gold vertical timeline, and highlighted service/devotional/church events.
+- The schedule page uses the 2026 editorial timeline design, with day badges, Coffee Cart rows, a gold vertical timeline, and highlighted workshop/service/devotional/church events.
 - The FAQ and registration pages use the same mobile-first page-hero treatment as the schedule page.
 - The activity cards use the existing self-hosted WebP images from `public/` for the Preaching, Fellowship, Worship, and Prayer cards.
 - The registration page embeds the Subsplash registration/payment form from `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` inside an `iframe` and lists the 2026 camp and registration dates.

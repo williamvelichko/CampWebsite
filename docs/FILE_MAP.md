@@ -403,9 +403,10 @@ Logic:
 
 - Imports `ScheduleData.json`
 - Renders the 2026 schedule header with date range, title, subtitle, and divider ornament
-- Renders three timeline sections from the local JSON data: arrival day, full days, and departure day
+- Renders three timeline sections from the local JSON data: arrival day, Thursday-Saturday, and departure day
 - Maps each event into a time/activity row on the vertical gold timeline
-- Applies a highlighted row treatment to service, devotional, and church events
+- Applies a highlighted row treatment to workshop, service, devotional, and church events
+- Represents Coffee Cart hours as normal schedule rows in the Thursday-Saturday section
 
 Note:
 
@@ -417,8 +418,8 @@ Component test for `Schedule`.
 
 Coverage:
 
-- verifies the 2026 schedule header, all three timeline sections, and representative events render
-- verifies service, devotional, and church events are marked as highlighted timeline rows
+- verifies the 2026 schedule header, all three timeline sections, Coffee Cart rows, and representative events render
+- verifies workshop, service, devotional, and church events are marked as highlighted timeline rows
 
 ### `src/app/components/Schedule/data/ScheduleData.json`
 

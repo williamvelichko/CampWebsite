@@ -14,20 +14,21 @@
       ]
     },
     {
-      "badge": "Days 2 – 4",
-      "title": "Full Days — August 13 – 15",
+      "badge": "Thu – Sat",
+      "title": "Thursday – Saturday — August 13 – 15",
       "events": [
+        { "time": "8:00 – 8:45 AM", "activity": "Coffee Cart", "highlight": false },
         { "time": "8:30 AM", "activity": "Breakfast", "highlight": false },
-        { "time": "9:15 – 10:15 AM", "activity": "Morning Devotional", "highlight": true },
-        { "time": "10:30 AM", "activity": "Morning Church", "highlight": true },
-        { "time": "12:15 PM", "activity": "Free Time / Fellowship / Games", "highlight": false },
+        { "time": "9:15 – 10:00 AM", "activity": "Morning Workshop", "highlight": true },
+        { "time": "10:30 AM – 12:00 PM", "activity": "Morning Church", "highlight": true },
+        { "time": "12:15 PM", "activity": "Games", "highlight": false },
+        { "time": "1:30 – 2:30 PM", "activity": "Coffee Cart", "highlight": false },
         { "time": "2:00 PM", "activity": "Lunch", "highlight": false },
-        { "time": "3:00 – 6:00 PM", "activity": "Swimming", "highlight": false },
+        { "time": "6:00 – 7:00 PM", "activity": "Coffee Cart", "highlight": false },
         { "time": "7:00 PM", "activity": "Dinner", "highlight": false },
-        { "time": "8:00 PM", "activity": "Evening Church", "highlight": true },
-        { "time": "9:30 PM", "activity": "Evening Activities", "highlight": false },
-        { "time": "10:30 PM", "activity": "Tea Fellowship", "highlight": false },
-        { "time": "12:59 AM", "activity": "Sleep Time", "highlight": false }
+        { "time": "8:00 PM", "activity": "Church", "highlight": true },
+        { "time": "9:15 – 9:30 PM", "activity": "Evening Activities", "highlight": false },
+        { "time": "12:59 AM", "activity": "Lights Out", "highlight": false }
       ]
     },
     {
