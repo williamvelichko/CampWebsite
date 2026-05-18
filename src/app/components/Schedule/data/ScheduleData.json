@@ -1,27 +1,45 @@
 {
-  "regular": [
-    { "time": "08:30 AM", "activity": "Breakfast" },
-    { "time": "9:15 AM - 10:15 AM", "activity": "Morning Devotional" },
-    { "time": "10:30 AM - 12:00 PM", "activity": "Morning Church" },
-    { "time": "12:15 PM", "activity": "Free Time / Fellowship / Games" },
-    { "time": "02:00 PM", "activity": "Lunch" },
-    { "time": "03:00 PM - 06:00 PM", "activity": "Swimming" },
-    { "time": "07:00 PM", "activity": "Dinner" },
-    { "time": "08:00 PM", "activity": "Evening Church" },
-    { "time": "09:30 PM", "activity": "Evening Activities" },
-    { "time": "10:30 PM", "activity": "Tea Fellowship" },
-    { "time": "12:59 PM", "activity": "Sleep Time" }
-  ],
-  "arrival": [
-    { "time": "04:00 PM", "activity": "Drive In" },
-    { "time": "07:00 PM", "activity": "Dinner" },
-    { "time": "08:00 PM", "activity": "Welcome Service" },
-    { "time": "09:30 PM", "activity": "Tea Fellowship" },
-    { "time": "12:59 PM", "activity": "Sleep Time" }
-  ],
-  "departure": [
-    { "time": "09:00 AM", "activity": "Breakfast" },
-    { "time": "10:00 AM", "activity": "Morning Church" },
-    { "time": "11:30 AM", "activity": "Cleaning and Leaving Camp" }
+  "dateRange": "August 12 – 16, 2026",
+  "subtitle": "A week filled with the Word, worship, fellowship, and the glory of God.",
+  "sections": [
+    {
+      "badge": "Day 1",
+      "title": "Arrival Day — August 12",
+      "events": [
+        { "time": "4:00 PM", "activity": "Drive In / Check In", "highlight": false },
+        { "time": "7:00 PM", "activity": "Dinner", "highlight": false },
+        { "time": "8:00 PM", "activity": "Welcome Service", "highlight": true },
+        { "time": "9:30 PM", "activity": "Tea Fellowship", "highlight": false },
+        { "time": "12:59 AM", "activity": "Sleep Time", "highlight": false }
+      ]
+    },
+    {
+      "badge": "Days 2 – 4",
+      "title": "Full Days — August 13 – 15",
+      "events": [
+        { "time": "8:30 AM", "activity": "Breakfast", "highlight": false },
+        { "time": "9:15 – 10:15 AM", "activity": "Morning Devotional", "highlight": true },
+        { "time": "10:30 AM", "activity": "Morning Church", "highlight": true },
+        { "time": "12:15 PM", "activity": "Free Time / Fellowship / Games", "highlight": false },
+        { "time": "2:00 PM", "activity": "Lunch", "highlight": false },
+        { "time": "3:00 – 6:00 PM", "activity": "Swimming", "highlight": false },
+        { "time": "7:00 PM", "activity": "Dinner", "highlight": false },
+        { "time": "8:00 PM", "activity": "Evening Church", "highlight": true },
+        { "time": "9:30 PM", "activity": "Evening Activities", "highlight": false },
+        { "time": "10:30 PM", "activity": "Tea Fellowship", "highlight": false },
+        { "time": "12:59 AM", "activity": "Sleep Time", "highlight": false }
+      ]
+    },
+    {
+      "badge": "Day 5",
+      "title": "Departure Day — August 16",
+      "events": [
+        { "time": "8:30 AM", "activity": "Breakfast", "highlight": false },
+        { "time": "9:15 – 10:15 AM", "activity": "Morning Devotional", "highlight": true },
+        { "time": "10:30 AM", "activity": "Final Church Service", "highlight": true },
+        { "time": "12:15 PM", "activity": "Lunch", "highlight": false },
+        { "time": "2:00 PM", "activity": "Departure", "highlight": false }
+      ]
+    }
   ]
 }

@@ -27,25 +27,33 @@ const FAQ = () => {
   return (
     <div className={styles.mainContainer}>
       <section className={styles.titleSection}>
+        <p className={styles.eyebrow}>Camp Details</p>
         <h3 className={styles.faqTitle}>Frequently Asked Questions</h3>
         <p className={styles.faqDescription}>
-          Find answers to the most common questions about our camp.
+          Answers for families and campers preparing for Bible Camp 2026.
         </p>
+        <div className={styles.headerRule} aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
       </section>
       <div className={styles.faqContainer}>
         {faqData.map((item, index) => (
           <div key={index} className={styles.faqSection}>
-            <div className={styles.questionContainer}>
-              <h3
-                className={styles.question}
+            <h3 className={styles.questionHeading}>
+              <button
+                className={styles.questionContainer}
+                type="button"
+                aria-expanded={activeIndex === index}
                 onClick={() => toggleAnswer(index)}
               >
-                {item.question}
-              </h3>
-              <span className={styles.toggleIcon}>
-                {activeIndex === index ? "-" : "+"}
-              </span>
-            </div>
+                <span className={styles.question}>{item.question}</span>
+                <span className={styles.toggleIcon} aria-hidden="true">
+                  {activeIndex === index ? "-" : "+"}
+                </span>
+              </button>
+            </h3>
             {activeIndex === index && (
               <div className={styles.answer}>{renderAnswer(item.answer)}</div>
             )}

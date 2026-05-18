@@ -20,4 +20,17 @@ describe("TemporaryNotice", () => {
     ).toBeInTheDocument();
     expect(screen.getByText("Temporary Update")).toBeInTheDocument();
   });
+
+  it("falls back to the default holding-copy when no props are provided", () => {
+    render(<TemporaryNotice />);
+
+    expect(
+      screen.getByRole("heading", { name: "Content is being updated" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Please check back later while we finish publishing the next camp update."
+      )
+    ).toBeInTheDocument();
+  });
 });

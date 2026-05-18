@@ -13,6 +13,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const isHomepage = pathname === "/";
+  const mobileNavigationId = "mobile-navigation";
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -58,10 +59,21 @@ const Header = () => {
 
       {isMobileView ? (
         <>
-          <div className={styles.hamburger} onClick={toggleMenu}>
+          <button
+            className={styles.hamburger}
+            onClick={toggleMenu}
+            aria-controls={mobileNavigationId}
+            aria-expanded={isMenuOpen}
+            aria-label="Open navigation menu"
+            type="button"
+          >
             ☰
-          </div>
-          <MobileNavbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          </button>
+          <MobileNavbar
+            id={mobileNavigationId}
+            isMenuOpen={isMenuOpen}
+            toggleMenu={toggleMenu}
+          />
         </>
       ) : (
         <DesktopNavbar isAtTop={isAtTop} />

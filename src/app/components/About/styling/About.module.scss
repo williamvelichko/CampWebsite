@@ -1,30 +1,101 @@
 @import "../../../styles/styles.scss";
 
-/* About.styling */
 .about {
-  color: $accent-color;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  border-bottom: 1px solid $teritary-color;
-  align-items: center;
+  position: relative;
+  padding: 4rem 1.25rem;
+  background: $primary-color;
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
 
-  @media (min-width: 800px) {
-    div {
-      width: 50%;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(60%, 44rem);
+    height: 1px;
+    background: linear-gradient(to right, transparent, $teritary-color, transparent);
+    transform: translateX(-50%);
   }
 }
 
-.about h3 {
-  font-size: 24px;
-  font-weight: 600;
-  // font-style: italic;
-  margin: 0;
+.content {
+  max-width: 860px;
+  margin: 0 auto;
 }
-.about p {
-  // font-style: italic;
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: $gold-color;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.about blockquote {
+  position: relative;
+  margin: 1.5rem auto 0;
+  padding: 0 0.5rem;
+  color: $accent-color;
+  font-family: $serif-font;
+  font-size: clamp(1.625rem, 8vw, 2.625rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: -1.25rem;
+    left: 0;
+    color: $gold-color;
+    font-family: $serif-font;
+    font-size: 5.5rem;
+    font-style: normal;
+    line-height: 1;
+    opacity: 0.28;
+  }
+}
+
+.reference {
+  margin: 1.5rem 0 0;
+  color: #8a6a1f;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+
+  span:first-child,
+  span:last-child {
+    width: 3.75rem;
+    height: 1px;
+    background: $gold-color;
+    opacity: 0.5;
+  }
+
+  span:nth-child(2) {
+    width: 0.3125rem;
+    height: 0.3125rem;
+    background: $gold-color;
+    opacity: 0.7;
+    transform: rotate(45deg);
+  }
+}
+
+@media (min-width: 800px) {
+  .about {
+    padding: 6rem 2rem;
+  }
+
+  .about blockquote {
+    padding: 0 2.25rem;
+  }
 }

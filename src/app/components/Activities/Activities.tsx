@@ -4,20 +4,19 @@ import Expectations from "./components/Expectations";
 
 const Activities = () => {
   return (
-    <div>
-      <section className={styles.activities}>
+    <section className={styles.activities}>
+      <div className={styles.inner}>
         <div className={styles.activityContent}>
+          <p className={styles.eyebrow}>At Camp</p>
           <h3>What to Expect</h3>
           <p>
-            At our camp, everything we do is centered around worshiping God in
-            Spirit and in Truth. You can expect to be equipped and encouraged
-            through the preaching of God&apos;s Word, joyful worship through
-            singing, meaningful fellowship, and devoted prayer.
+            Everything we do is centered on Jesus Christ — the preaching of His
+            gospel, joyful worship, deep fellowship, and devoted prayer.
           </p>
         </div>
-      </section>
-      <Expectations />
-    </div>
+        <Expectations />
+      </div>
+    </section>
   );
 };
 

@@ -1,26 +1,26 @@
 [
   {
     "activity": "Preaching",
-    "image": "/campPreaching2025.jpg",
-    "imageWebp": "/campPreaching2025.webp",
+    "image": "/preaching2026.webp",
+    "imageWebp": "/preaching2026.webp",
     "description": "Be challenged and encouraged through passionate, Bible-centered preaching that speaks to the heart and mind."
   },
   {
     "activity": "Fellowship",
-    "image": "/Fellowship.JPG",
-    "imageWebp": "/Fellowship.webp",
+    "image": "/fellowship2026.webp",
+    "imageWebp": "/fellowship2026.webp",
     "description": "Grow closer to other believers through shared experiences, deep conversations, and joyful moments together."
   },
   {
     "activity": "Worship",
-    "image": "/campWorship2025.jpg",
-    "imageWebp": "/campWorship2025.jpg",
+    "image": "/worship2026.webp",
+    "imageWebp": "/worship2026.webp",
     "description": "Lift your voice in heartfelt worship as we glorify God through music, surrounded by His creation."
   },
   {
     "activity": "Prayer",
-    "image": "/campPrayer2025.JPG",
-    "imageWebp": "/campPrayer2025.webp",
+    "image": "/prayer2026.webp",
+    "imageWebp": "/prayer2026.webp",
     "description": "Find quiet moments to seek God through personal and group prayer, drawing closer to Him with purpose and peace."
   }
 ]

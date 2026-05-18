@@ -4,8 +4,8 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 export const metadata: Metadata = {
-  title: "BibleCamp",
-  description: "TheBibleCamp",
+  title: "Bible Camp 2026",
+  description: "The Gospel of God Bible Camp 2026",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main className="container mx-auto px-4 py-8">{children}</main>
+        <main className="site-main">{children}</main>
         <Footer />
       </body>
     </html>

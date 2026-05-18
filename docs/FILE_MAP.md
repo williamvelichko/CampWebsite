@@ -6,7 +6,11 @@ This document explains what each tracked file in the repository is responsible f
 
 ### `README.md`
 
-Primary project overview. Explains what the site does, how it is structured, and where common content updates should be made.
+Primary project overview. Explains what the site does, how it is structured, where common content updates should be made, and what the automated test suite currently covers.
+
+### `AGENTS.md`
+
+Repository-specific agent workflow. Requires documentation review, baseline verification, test planning, documentation updates, and automated test updates before agents claim a code change is complete.
 
 ### `package.json`
 
@@ -18,7 +22,7 @@ Generated npm lockfile. Pins exact dependency versions so installs are reproduci
 
 ### `.env.example`
 
-Example environment configuration for local development. Documents the `NEXT_PUBLIC_TEMPORARY_MODE` flag used to switch the site into a temporary holding state.
+Example environment configuration for local development. Documents the `NEXT_PUBLIC_TEMPORARY_MODE` flag used to switch the site into a temporary holding state and `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` used for the embedded registration/payment form.
 
 ### `next.config.mjs`
 
@@ -37,7 +41,23 @@ Logic:
 
 ### `vitest.setup.ts`
 
-Test setup file. Registers `@testing-library/jest-dom` matchers for DOM assertions.
+Test setup file.
+
+Logic:
+
+- Registers `@testing-library/jest-dom` matchers for DOM assertions
+- Mocks `next/head`, `next/image`, `next/link`, and `next/navigation` for component tests
+- Cleans up the DOM and resets the mocked pathname between tests
+
+### `src/test/testUtils.tsx`
+
+Shared test utilities for component and route tests.
+
+Logic:
+
+- Stores the mocked pathname consumed by the `next/navigation` mock
+- Provides lightweight mock implementations for `next/link` and `next/image`
+- Provides helpers for changing `window.innerWidth` and `window.scrollY` in tests
 
 ### `tsconfig.json`
 
@@ -50,6 +70,7 @@ Shared site-level configuration.
 Logic:
 
 - Reads `NEXT_PUBLIC_TEMPORARY_MODE` from the environment
+- Reads `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` from the environment, with a checked-in fallback URL for the registration/payment form
 - Exposes a single boolean used by both server and client components
 - Builds the primary navigation links based on whether temporary mode is enabled
 - Stores the shared temporary-mode message shown on disabled routes
@@ -62,21 +83,32 @@ Coverage:
 
 - verifies the env flag parsing
 - verifies the temporary and non-temporary navigation sets
+- verifies the default full-navigation fallback when the env flag is unset
+- verifies the default and configured Subsplash registration/payment form URLs
 
 ## App router
 
 ### `src/app/layout.tsx`
 
-Global layout for every route. Loads fonts, global CSS, shared metadata, the persistent header, the main page wrapper, and the footer.
+Global layout for every route. Loads global CSS, shared metadata, the persistent header, the main page wrapper, and the footer.
 
 Logic:
 
 - Renders `Header` above route content and `Footer` below it
 - Provides the site-wide metadata title and description
 
+### `src/app/layout.test.tsx`
+
+Route-shell tests for the root layout.
+
+Coverage:
+
+- verifies that route content is wrapped with the shared header and footer
+- verifies the exported site metadata
+
 ### `src/app/globals.css`
 
-Global CSS applied once for the entire app. Resets default body spacing, applies the base system font stack, and makes the page fill the viewport vertically so the footer sits below the main content.
+Global CSS applied once for the entire app. Imports Cormorant Garamond and DM Sans, sets the 2026 warm cream/navy/gold CSS variables, resets default body spacing, and makes the page fill the viewport vertically so the footer sits below the main content.
 
 ### `src/app/page.tsx`
 
@@ -87,6 +119,15 @@ Logic:
 - Renders `MainSection` as the hero
 - Renders `About`, `Video`, and `Activities` in sequence below the hero
 - Hides the `Video` section when temporary mode is enabled
+
+### `src/app/page.test.tsx`
+
+Route-level tests for `/`.
+
+Coverage:
+
+- verifies the homepage renders all main sections in normal mode
+- verifies the promo video section is hidden in temporary mode
 
 ### `src/app/page.module.scss`
 
@@ -114,6 +155,14 @@ Coverage:
 
 Route entry for `/faq`. Delegates the page body to the `FAQ` component.
 
+### `src/app/faq/page.test.tsx`
+
+Route-level test for `/faq`.
+
+Coverage:
+
+- verifies that the route renders the FAQ component
+
 ### `src/app/registration/page.tsx`
 
 Route entry for `/registration`.
@@ -134,7 +183,23 @@ Coverage:
 
 ### `src/app/styles/styles.scss`
 
-Shared SCSS variables. Centralizes the main palette and primary local font stack used by component styles.
+Shared SCSS variables. Centralizes the 2026 cream, navy, muted slate, and gold palette plus the Cormorant Garamond and DM Sans font stacks used by component styles.
+
+### `src/app/fonts/OldLondon.ttf`
+
+Self-hosted Old London TrueType font available in the project but not currently referenced by the app.
+
+### `src/app/fonts/OldLondonAlternate.ttf`
+
+Alternate Old London TrueType font available in the project but not currently referenced by the app.
+
+### `src/app/fonts/Olondon_.otf`
+
+Old London OpenType font variant available in the project but not currently referenced by the app.
+
+### `src/app/fonts/Olondona.otf`
+
+Alternate Old London OpenType font variant available in the project but not currently referenced by the app.
 
 ## Header
 
@@ -151,6 +216,16 @@ Logic:
 - Uses a transparent style at the top of the homepage and a white style after scrolling or on inner pages
 - Switches between `DesktopNavbar` and `MobileNavbar`
 
+### `src/app/components/Header/Header.test.tsx`
+
+Component tests for `Header`.
+
+Coverage:
+
+- verifies that desktop widths use the desktop navigation
+- verifies that inner pages are treated as scrolled immediately
+- verifies that mobile widths use the mobile navigation and that the menu toggles open
+
 ### `src/app/components/Header/components/DesktopNavbar.tsx`
 
 Desktop navigation component.
@@ -160,6 +235,15 @@ Logic:
 - Reads the main route links from shared site config
 - Highlights the active route using `usePathname`
 - Accepts `isAtTop` so link colors can change with the transparent versus scrolled header state
+
+### `src/app/components/Header/components/DesktopNavbar.test.tsx`
+
+Component tests for `DesktopNavbar`.
+
+Coverage:
+
+- verifies the full navigation renders when temporary mode is disabled
+- verifies the trimmed navigation renders when temporary mode is enabled
 
 ### `src/app/components/Header/components/MobileNavbar.tsx`
 
@@ -171,18 +255,29 @@ Logic:
 - Opens and closes based on props passed from `Header`
 - Closes when the backdrop, close button, or any navigation link is clicked
 - Highlights the active route
+- Locks body scrolling while open so the full-screen menu remains stable on mobile devices
+
+### `src/app/components/Header/components/MobileNavbar.test.tsx`
+
+Component tests for `MobileNavbar`.
+
+Coverage:
+
+- verifies the mobile navigation renders the public links
+- verifies the backdrop, close button, and navigation links all trigger the menu toggle callback
+- verifies body scrolling is locked only while the mobile navigation is open
 
 ### `src/app/components/Header/styles/Header.module.scss`
 
-Styles for the fixed header shell, logo behavior, scroll-state styling, and hamburger icon.
+Styles for the fixed translucent navy header shell, logo behavior, scroll-state styling, and fixed-size hamburger button.
 
 ### `src/app/components/Header/styles/DesktopNavbar.module.scss`
 
-Styles for the desktop navigation list, active-link underline, and scroll-state color swap.
+Styles for the desktop navigation list, active-link treatment, gold register button, and scroll-state color swap.
 
 ### `src/app/components/Header/styles/MobileNavbar.module.scss`
 
-Styles for the mobile nav drawer, backdrop overlay, close button, and stacked mobile links.
+Styles for the viewport-safe full-screen mobile nav overlay, close button, scrollable short-screen layout, and stacked Cormorant mobile links.
 
 ## Homepage sections
 
@@ -192,40 +287,61 @@ Client component for the homepage hero banner.
 
 Logic:
 
-- Tracks which hero image should be shown in component state
-- Uses `window.innerWidth` to choose vertical artwork on small screens and horizontal artwork on larger screens
-- Uses a canvas capability check to prefer WebP assets and fall back to JPG when necessary
-- Renders the hero image, an overlay, and a bouncing down arrow
-- Shows the registration CTA only when temporary mode is disabled
+- Uses `public/Auburn-Camp-Banner.jpg` as the full-bleed hero image
+- Renders the hero image, layered dark/gold overlays, the vertically and horizontally centered "The Gospel of God" title, and a scroll cue
+- Shows registration and schedule CTAs only when temporary mode is disabled
 - Replaces the CTA with a temporary message when temporary mode is enabled
+
+### `src/app/components/MainSection/MainSection.test.tsx`
+
+Component tests for `MainSection`.
+
+Coverage:
+
+- verifies the registration/schedule CTAs and banner hero image in normal mode
+- verifies the centered hero title renders in both normal and temporary modes
+- verifies the temporary badge renders with the same banner hero image
 
 ### `src/app/components/MainSection/styling/MainSection.module.scss`
 
-Styles for the full-height hero layout, image positioning, overlay, register button, temporary badge, and arrow animation.
+Styles for the full-height 2026 hero layout, image positioning, responsive Cormorant title stack, dark/gold overlays, CTA buttons, temporary badge, and scroll cue animation.
 
 ### `src/app/components/About/About.tsx`
 
-Simple presentational section on the homepage. Displays Psalm 72:19 as the theme verse.
+Simple presentational section on the homepage. Displays Romans 1:16 as the 2026 theme verse.
+
+### `src/app/components/About/About.test.tsx`
+
+Component test for `About`.
+
+Coverage:
+
+- verifies the verse reference and verse copy render
 
 ### `src/app/components/About/styling/About.module.scss`
 
-Styles for the centered verse section and its responsive width.
+Styles for the centered Romans 1:16 section, ornamental rule, and responsive quote typography.
 
 ### `src/app/components/Video/Video.tsx`
 
-Client component for the promo video section.
+Promo video section component.
 
 Logic:
 
-- Tracks the selected video files in state
-- Chooses vertical video files below `600px`
-- Chooses horizontal video files at `600px` and above
-- Re-renders the `<video>` element when the source changes by using `key={videoSrc.mp4}`
+- Uses `public/BibleCamp2026PromoV3.mp4` as the single horizontal promo video at every breakpoint
 - Enables controls, autoplay, loop, and inline playback
+
+### `src/app/components/Video/Video.test.tsx`
+
+Component tests for `Video`.
+
+Coverage:
+
+- verifies the same 2026 horizontal promo video source is used on small and large screens
 
 ### `src/app/components/Video/styles/Video.module.scss`
 
-Styles for centering the video and adjusting its width and height across breakpoints.
+Styles for centering the horizontal promo video, preserving a 16:9 aspect ratio at every breakpoint, and aligning the section with the 2026 cream background.
 
 ### `src/app/components/Activities/Activities.tsx`
 
@@ -233,8 +349,16 @@ Homepage section that introduces the camp experience and then renders the activi
 
 Logic:
 
-- Displays the "What to Expect" heading and summary copy
+- Displays the "What to Expect" heading and gospel-centered summary copy
 - Renders the `Expectations` grid below the introduction
+
+### `src/app/components/Activities/Activities.test.tsx`
+
+Component test for `Activities`.
+
+Coverage:
+
+- verifies the intro copy renders together with expectation card content
 
 ### `src/app/components/Activities/components/Expectations.tsx`
 
@@ -244,7 +368,15 @@ Logic:
 
 - Imports `expectData.json`
 - Loops through each activity item
-- Renders an image card with title and description overlay
+- Renders an image card with Roman numeral, title, divider, and description overlay
+
+### `src/app/components/Activities/components/Expectations.test.tsx`
+
+Component test for `Expectations`.
+
+Coverage:
+
+- verifies each activity JSON entry renders its title, image, and description
 
 ### `src/app/components/Activities/data/expectData.json`
 
@@ -259,7 +391,7 @@ Data shape:
 
 ### `src/app/components/Activities/styles/Expectations.module.scss`
 
-Styles for both the activity intro section and the responsive expectation card grid.
+Styles for both the dark navy activity intro section and the mobile-first expectation card grid.
 
 ## Schedule page
 
@@ -270,12 +402,23 @@ Schedule page component.
 Logic:
 
 - Imports `ScheduleData.json`
-- Renders three sections: arrival day, full days, and departure day
-- Maps each time/activity entry into a simple two-column row
+- Renders the 2026 schedule header with date range, title, subtitle, and divider ornament
+- Renders three timeline sections from the local JSON data: arrival day, full days, and departure day
+- Maps each event into a time/activity row on the vertical gold timeline
+- Applies a highlighted row treatment to service, devotional, and church events
 
 Note:
 
 - This component is bypassed when temporary mode is enabled
+
+### `src/app/components/Schedule/Schedule.test.tsx`
+
+Component test for `Schedule`.
+
+Coverage:
+
+- verifies the 2026 schedule header, all three timeline sections, and representative events render
+- verifies service, devotional, and church events are marked as highlighted timeline rows
 
 ### `src/app/components/Schedule/data/ScheduleData.json`
 
@@ -283,13 +426,19 @@ Content source for the schedule page.
 
 Data shape:
 
-- `arrival`: list of first-day items
-- `regular`: list of standard full-day items
-- `departure`: list of departure-day items
+- `dateRange`: eyebrow date text shown above the schedule title
+- `subtitle`: italic page subtitle under the schedule title
+- `sections`: ordered list of schedule day groups
+- section `badge`: compact day label such as `Day 1`
+- section `title`: day heading such as `Arrival Day — August 12`
+- section `events`: ordered list of schedule rows
+- event `time`: displayed time range
+- event `activity`: displayed event name
+- event `highlight`: boolean used for the gold dot and emphasized event typography
 
 ### `src/app/components/Schedule/styles/schedule.module.scss`
 
-Styles for the schedule title area, card container, per-day sections, and responsive list rows.
+Styles for the 2026 editorial schedule design: warm cream page background, centered title block, gold divider ornament, day badges, vertical gold timeline, highlighted rows, and mobile/tablet responsive timeline layout.
 
 ## FAQ page
 
@@ -300,10 +449,19 @@ Client component for the FAQ accordion.
 Logic:
 
 - Stores the currently expanded item index in local state
-- Toggles the active item open and closed on click
+- Toggles the active item open and closed through accessible accordion buttons
 - Accepts FAQ answers as either an array of strings or an HTML string
 - Renders arrays as a list
 - Renders string answers with `dangerouslySetInnerHTML`
+
+### `src/app/components/FAQ/FAQ.test.tsx`
+
+Component tests for `FAQ`.
+
+Coverage:
+
+- verifies HTML-string answers expand and collapse correctly
+- verifies array answers render as lists
 
 ### `src/app/components/FAQ/data/faqData.json`
 
@@ -316,7 +474,7 @@ Data shape:
 
 ### `src/app/components/FAQ/styles/FAQ.module.scss`
 
-Styles for the FAQ page layout, accordion sections, answer panels, and responsive typography.
+Styles for the FAQ page hero, accessible accordion buttons, answer panels, and responsive typography.
 
 ## Registration page
 
@@ -326,14 +484,22 @@ Registration page component.
 
 Logic:
 
-- Stores the external registration form URL in a constant
-- Shows hard-coded registration deadline information
+- Reads the external registration/payment form URL from shared site config
+- Shows hard-coded August 12-16, 2026 camp date information and registration deadline information
 - Embeds the external registration form inside an `iframe`
+- Includes helper copy below the embedded form frame
 
 Note:
 
 - This component is bypassed when temporary mode is enabled
-- `Head` is imported from `next/head` but is not used
+
+### `src/app/components/Registration/Registration.test.tsx`
+
+Component test for `Registration`.
+
+Coverage:
+
+- verifies the 2026 registration heading, dates, embedded form URL, and direct registration link render
 
 ## Temporary notice
 
@@ -353,14 +519,15 @@ Component test for `TemporaryNotice`.
 Coverage:
 
 - verifies the title, description, and label render correctly
+- verifies the default holding-state copy renders when props are omitted
 
 ### `src/app/components/TemporaryNotice/styles/TemporaryNotice.module.scss`
 
-Styles for the temporary notice layout and card.
+Styles for the temporary notice layout and card using the 2026 cream/navy/gold visual system.
 
 ### `src/app/components/Registration/styles/Registration.module.scss`
 
-Styles for the registration heading, date block, and large embedded form frame.
+Styles for the registration page hero, sticky date block on desktop, and large embedded form frame.
 
 ## Footer
 
@@ -370,13 +537,22 @@ Shared site footer.
 
 Logic:
 
-- Displays the camp logo, ministry attribution, physical address, and phone number
+- Displays the camp logo, "The Gospel of God" footer wordmark, Romans 1:16 footer copy, ministry attribution, physical address, and phone number
+- Links to the main site routes
 - Links to Instagram and YouTube with `react-icons`
 - Shows a copyright line
 
+### `src/app/components/Footer/Footer.test.tsx`
+
+Component test for `Footer`.
+
+Coverage:
+
+- verifies the shared contact details, social links, and 2026 copyright render correctly
+
 ### `src/app/components/Footer/styles/Footer.module.scss`
 
-Styles for the footer layout, logo, social icons, and bottom copyright section.
+Styles for the dark navy footer layout, logo, footer navigation, social icons, and bottom copyright section.
 
 ## Public assets
 
@@ -392,6 +568,10 @@ Primary camp logo used in the header and footer.
 
 Alternate logo asset present in the repo but not referenced by the current app code.
 
+### `public/Auburn-Camp-Banner.jpg`
+
+Current full-bleed homepage hero image.
+
 ### `public/next.svg`
 
 Default Next.js starter asset. Not referenced by the current app code.
@@ -402,67 +582,91 @@ Default Vercel starter asset. Not referenced by the current app code.
 
 ### `public/GloryOfGodVert.webp`
 
-Mobile hero image in WebP format.
+Previous mobile hero image in WebP format. Not referenced by the current app code.
 
 ### `public/GloryOfGodVert.jpg`
 
-Mobile hero image fallback in JPG format.
+Previous mobile hero image fallback in JPG format. Not referenced by the current app code.
 
 ### `public/GloryOfGodHorizontal.webp`
 
-Desktop hero image in WebP format.
+Previous desktop hero image in WebP format. Not referenced by the current app code.
 
 ### `public/GloryOfGodHorizontal.jpg`
 
-Desktop hero image fallback in JPG format.
+Previous desktop hero image fallback in JPG format. Not referenced by the current app code.
+
+### `public/BibleCamp2026PromoV3.mp4`
+
+Current horizontal MP4 promo video used by the homepage video section.
 
 ### `public/campvideo2025V.webm`
 
-Vertical promo video in WebM format for small screens.
+Previous vertical promo video in WebM format. Not referenced by the current app code.
 
 ### `public/campvideo2025V.mp4`
 
-Vertical promo video in MP4 format fallback for small screens.
+Previous vertical promo video in MP4 format. Not referenced by the current app code.
 
 ### `public/campvideo2025H.webm`
 
-Horizontal promo video in WebM format for larger screens.
+Previous horizontal promo video in WebM format. Not referenced by the current app code.
 
 ### `public/campvideo2025H.mp4`
 
-Horizontal promo video in MP4 format fallback for larger screens.
+Previous horizontal promo video in MP4 format. Not referenced by the current app code.
+
+### `public/preaching2026.webp`
+
+Current WebP activity image for the preaching card.
+
+### `public/fellowship2026.webp`
+
+Current WebP activity image for the fellowship card.
+
+### `public/worship2026.webp`
+
+Current WebP activity image for the worship card.
+
+### `public/prayer2026.webp`
+
+Current WebP activity image for the prayer card.
+
+### `public/worship1.webp`
+
+Additional worship-related WebP image available in the project but not currently referenced by the app.
 
 ### `public/campPreaching2025.jpg`
 
-JPG activity image for the preaching card.
+Previous JPG activity image for the preaching card. Not referenced by the current app code.
 
 ### `public/campPreaching2025.webp`
 
-WebP version of the preaching activity image.
+Previous WebP version of the preaching activity image. Not referenced by the current app code.
 
 ### `public/Fellowship.JPG`
 
-JPG activity image for the fellowship card.
+Previous JPG activity image for the fellowship card. Not referenced by the current app code.
 
 ### `public/Fellowship.webp`
 
-WebP version of the fellowship activity image.
+Previous WebP version of the fellowship activity image. Not referenced by the current app code.
 
 ### `public/campWorship2025.jpg`
 
-JPG activity image for the worship card.
+Previous JPG activity image for the worship card. Not referenced by the current app code.
 
 ### `public/campWorship2025.webp`
 
-WebP version of the worship activity image.
+Previous WebP version of the worship activity image. Not referenced by the current app code.
 
 ### `public/campPrayer2025.JPG`
 
-JPG activity image for the prayer card.
+Previous JPG activity image for the prayer card. Not referenced by the current app code.
 
 ### `public/campPrayer2025.webp`
 
-WebP version of the prayer activity image.
+Previous WebP version of the prayer activity image. Not referenced by the current app code.
 
 ## Maintenance notes
 
@@ -471,5 +675,5 @@ The current website is straightforward, but a few implementation details matter 
 - Route content is mostly static and local. There is no CMS, API, or database.
 - Responsive behavior is split between CSS breakpoints and client-side viewport checks.
 - Most user-editable content is stored in JSON files, except for the footer copy, hero button, verse, and registration page details.
-- The registration form is external. If the Subsplash URL changes, the registration page will break until `Registration.tsx` is updated.
+- The registration form is external. If the Subsplash URL changes, update `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL`; `src/app/config/site.ts` contains the fallback URL used when the env variable is blank.
 - Some assets and starter files are still present even though the live app does not use them.

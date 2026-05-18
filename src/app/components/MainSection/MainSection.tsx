@@ -1,67 +1,71 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import styles from "./styling/MainSection.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { isTemporaryModeEnabled } from "../../config/site";
 
+const HERO_IMAGE_SRC = "/Auburn-Camp-Banner.jpg";
+
 export const MainSection = () => {
-  const [imageSrc, setImageSrc] = useState("/GloryOfGodVert.webp");
-
-  useEffect(() => {
-    const updateImageSrc = () => {
-      const isMobile = window.innerWidth <= 800;
-
-      const webpSupported =
-        document
-          .createElement("canvas")
-          .toDataURL("image/webp")
-          .indexOf("data:image/webp") === 0;
-
-      if (webpSupported) {
-        setImageSrc(
-          isMobile ? "/GloryOfGodVert.webp" : "/GloryOfGodHorizontal.webp"
-        );
-      } else {
-        setImageSrc(
-          isMobile ? "/GloryOfGodVert.jpg" : "/GloryOfGodHorizontal.jpg"
-        );
-      }
-    };
-
-    updateImageSrc();
-    window.addEventListener("resize", updateImageSrc);
-
-    return () => window.removeEventListener("resize", updateImageSrc);
-  }, []);
-
   return (
-    <div className={styles.hero}>
-      <div className={styles.imageWrapper}>
+    <section className={styles.hero}>
+      <div className={styles.imageWrapper} aria-hidden="true">
         <Image
-          src={imageSrc}
-          alt="Camp Adventure"
-          layout="fill"
+          src={HERO_IMAGE_SRC}
+          alt="Bible camp banner artwork"
+          fill
           className={styles.image}
-          objectFit="cover"
+          sizes="100vw"
           priority
         />
       </div>
+      <div className={styles.tintOverlay} />
+      <div className={styles.engraveOverlay} />
+      <div className={styles.vignetteOverlay} />
+      <div className={styles.glowOverlay} />
+
       <div className={styles.overlay}>
-        <div className={styles.textContainer}>
+        <div className={styles.heroContent}>
+          <p className={styles.eyebrow}>Bible Camp 2026 · August 12 – 16</p>
+          <h1 className={styles.heroTitle}>
+            <span className={styles.heroThe}>The</span>
+            <span className={styles.heroWord}>Gospel</span>
+            <span className={styles.heroOf}>of</span>
+            <span className={styles.heroWord}>God</span>
+          </h1>
+          <div className={styles.heroRule} aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+          <p className={styles.subtitle}>
+            A week in the Word, in worship, in fellowship
+          </p>
+        </div>
+
+        <div className={styles.ctaContainer}>
           {isTemporaryModeEnabled ? (
             <div className={styles.comingSoonBadge}>Registration opens later</div>
           ) : (
-            <Link href="/registration" className={styles.registerButton}>
-              Register
-            </Link>
+            <>
+              <Link href="/registration" className={styles.registerButton}>
+                Register Now
+              </Link>
+              <Link href="/schedule" className={styles.scheduleButton}>
+                View Schedule
+              </Link>
+            </>
           )}
-          <div className={styles.bounceArrow}>
-            <span>&#8595;</span>
-          </div>
+        </div>
+
+        <div className={styles.scrollCue}>
+          <Link href="#home-scripture" aria-label="Scroll to theme verse">
+            <span>Scroll</span>
+            <span className={styles.scrollArrow} />
+          </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

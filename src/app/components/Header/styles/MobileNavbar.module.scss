@@ -1,73 +1,146 @@
+@import "../../../styles/styles.scss";
+
 .backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
   z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(3, 8, 20, 0.72);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 
   &.open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 }
 
 .nav {
   position: fixed;
-  top: 0;
-  left: -100%; // Start off-screen to the left
-  width: 100%; // Cover full width
-  height: 100%; // Cover full height
-  background-color: white;
+  inset: 0;
   z-index: 101;
-  transition: left 0.3s ease; // Slide in from the left
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background:
+    radial-gradient(circle at top left, rgba(184, 144, 46, 0.16), transparent 36rem),
+    $accent-color;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: transform 0.28s ease, visibility 0.28s ease;
+  -webkit-overflow-scrolling: touch;
 
   &.open {
-    left: 0; // Slide in to cover the entire screen
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
   }
 
   ul {
-    list-style: none;
-    padding: 2rem;
-    margin: 0;
     display: flex;
+    flex: 1;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    height: 100%; // Center the links vertically
+    width: min(100%, 28rem);
+    min-height: min-content;
+    margin: 0 auto;
+    padding: 5.75rem 1.25rem 2.5rem;
+    list-style: none;
+  }
 
-    li {
-      margin: 1.5rem 0;
-
-      a {
-        text-decoration: none;
-        color: #333;
-        font-size: 1.5rem;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: #007bff;
-        }
-      }
-    }
+  li + li {
+    margin-top: clamp(0.55rem, 2.5vh, 1.1rem);
   }
 }
 
 .closeButton {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1px solid rgba(243, 237, 223, 0.28);
+  border-radius: 50%;
+  background: rgba(243, 237, 223, 0.06);
+  color: $primary-color;
   cursor: pointer;
-  color: #333;
+  font-size: 1.55rem;
+  line-height: 1;
+  transition: border-color 0.2s ease, color 0.2s ease;
 
-  &:hover {
-    color: #007bff;
+  &:hover,
+  &:focus-visible {
+    border-color: $gold-light-color;
+    color: $gold-light-color;
+    outline: none;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: clamp(3.5rem, 13vh, 5.25rem);
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(243, 237, 223, 0.1);
+  background: rgba(243, 237, 223, 0.035);
+  color: rgba(243, 237, 223, 0.82);
+  font-family: $serif-font;
+  font-size: clamp(2rem, 12vw, 3.1rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba(217, 184, 85, 0.48);
+    background: rgba(217, 184, 85, 0.08);
+    color: $gold-light-color;
+    outline: none;
+  }
+}
+
+.active {
+  border-color: rgba(217, 184, 85, 0.58);
+  color: $gold-light-color;
+}
+
+@supports (height: 100dvh) {
+  .backdrop,
+  .nav {
+    height: 100dvh;
+  }
+}
+
+@media (max-height: 560px) {
+  .nav {
+    ul {
+      justify-content: flex-start;
+      padding-top: 4.75rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  .navLink {
+    min-height: 3rem;
+    font-size: clamp(1.65rem, 9vw, 2.35rem);
   }
 }

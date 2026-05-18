@@ -1,6 +1,15 @@
 export const isTemporaryModeEnabled =
   process.env.NEXT_PUBLIC_TEMPORARY_MODE === "true";
 
+const defaultRegistrationFormUrl =
+  "https://subsplash.com/bbc-ca/lb/ev/+rqpz76d/register";
+
+const configuredRegistrationFormUrl =
+  process.env.NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL?.trim();
+
+export const registrationFormUrl =
+  configuredRegistrationFormUrl || defaultRegistrationFormUrl;
+
 export const primaryNavLinks = isTemporaryModeEnabled
   ? [
       { href: "/", label: "Home" },

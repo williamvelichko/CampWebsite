@@ -6,14 +6,27 @@ These rules apply to any agent working in this repository.
 
 Make accurate changes with enough context to avoid blind edits, regressions, and stale documentation.
 
+## Non-Negotiable Guardrails
+
+Agents must not edit application code until they have completed all of the following:
+
+1. read the required documentation
+2. inspected the directly related source files, data files, styles, and existing tests
+3. run the baseline verification commands that are available in the repository
+4. identified which documentation and tests must be updated or added
+
+If any of those steps cannot be completed, the agent must say so explicitly before proceeding.
+
 ## Required Workflow
 
 1. Read documentation first.
 2. Inspect the relevant code paths before proposing or making changes.
-3. Run the existing verification commands before editing anything.
-4. Update documentation before or alongside code changes.
-5. Add or update tests for the behavior being changed whenever the codebase supports it.
-6. Re-run verification after changes and report the result clearly.
+3. Read the existing tests for the affected area before editing.
+4. Run the existing verification commands before editing anything.
+5. Plan the required documentation and test updates before changing implementation.
+6. Update documentation before or alongside code changes.
+7. Add or update tests for the behavior being changed whenever the codebase supports it.
+8. Re-run verification after changes and report the result clearly.
 
 ## Read First
 
@@ -22,7 +35,15 @@ Before making changes, read these files first:
 - `README.md`
 - `docs/FILE_MAP.md`
 
-Then read the files directly related to the requested change.
+Then read the files directly related to the requested change, including:
+
+- route files
+- shared components they use
+- local JSON/content files they depend on
+- related styles when behavior or layout is involved
+- existing tests for the same area
+
+If the request spans multiple sections of the site, read all affected sections before editing any of them.
 
 ## Verification First
 
@@ -30,14 +51,14 @@ Before changing code, run the strongest available verification commands to estab
 
 Preferred order:
 
-1. `npm test` if a test script exists
-2. `npm run lint` if available
-3. `npm run build` if available
+1. `npm test`
+2. `npm run lint`
+3. `npm run build`
 
 Current repository note:
 
-- This repository does not currently define an `npm test` script in `package.json`.
-- Until a dedicated test suite exists, agents must use the best available baseline checks, which are `npm run lint` and `npm run build`.
+- This repository defines `npm test` with Vitest and React Testing Library.
+- Agents must treat `npm test`, `npm run lint`, and `npm run build` as the default baseline checks before editing and the required verification checks after editing.
 - If a verification command cannot run, the agent must say so explicitly and continue only with that limitation stated.
 
 ## Documentation Rule
@@ -56,6 +77,13 @@ Agents must not leave behavior changes undocumented.
 
 Agents must add or update automated tests when changing behavior, fixing bugs, or adding features, whenever the project has a test framework or when adding tests is reasonable within the task scope.
 
+Default expectation:
+
+- read the current tests in the affected area before editing
+- write or update the tests before changing implementation whenever that is practical
+- if strict test-first is not practical, add the tests in the same change set and explain the constraint
+- do not leave any touched behavior without automated coverage when the repo supports it
+
 Minimum expectations:
 
 - if tests already exist for the affected area, update them
@@ -70,6 +98,7 @@ Before editing:
 
 - understand the current behavior
 - identify where content, logic, styling, and assets are defined
+- identify the exact tests and docs that need to change
 - avoid guessing
 
 When editing:
@@ -81,6 +110,7 @@ When editing:
 After editing:
 
 - update docs
+- update or add tests
 - run verification again
 - summarize what changed, what was verified, and any remaining risk
 

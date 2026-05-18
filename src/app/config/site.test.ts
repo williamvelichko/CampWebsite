@@ -36,4 +36,34 @@ describe("site config", () => {
       { href: "/registration", label: "Register" },
     ]);
   });
+
+  it("defaults to full navigation when the env flag is unset", async () => {
+    const site = await loadSiteConfig();
+
+    expect(site.isTemporaryModeEnabled).toBe(false);
+    expect(site.primaryNavLinks).toHaveLength(4);
+  });
+
+  it("uses the default Subsplash registration URL when the env value is blank", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL", "");
+
+    const site = await loadSiteConfig();
+
+    expect(site.registrationFormUrl).toBe(
+      "https://subsplash.com/bbc-ca/lb/ev/+rqpz76d/register"
+    );
+  });
+
+  it("uses the configured Subsplash registration URL when provided", async () => {
+    vi.stubEnv(
+      "NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL",
+      "https://subsplash.com/example/register"
+    );
+
+    const site = await loadSiteConfig();
+
+    expect(site.registrationFormUrl).toBe(
+      "https://subsplash.com/example/register"
+    );
+  });
 });

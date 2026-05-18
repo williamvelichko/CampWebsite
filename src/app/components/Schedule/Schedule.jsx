@@ -5,58 +5,44 @@ import ScheduleData from "./data/ScheduleData.json";
 const Schedule = () => {
   return (
     <div className={styles.mainContainer}>
-      <section className={styles.titleSection}>
-        <h3 className={styles.scheduleTitle}>Camp Schedule</h3>
-        <p>
-          {/* Our camp runs from <strong>August 14th</strong> until{" "}
-          <strong>August 18th</strong>.  */}
-          We have a jam-packed schedule filled with exciting activities and a
-          great opportunity to build great friendships!
-        </p>
-      </section>
-      <div className={styles.scheduleContainer}>
-        <div className={styles.scheduleSection}>
-          <h3 className={styles.scheduleSectionTitle}>
-            Arrival Day (August 13)
-          </h3>
-          <ul className={styles.scheduleList}>
-            {ScheduleData.arrival.map((item, index) => (
-              <li key={index} className={styles.scheduleItem}>
-                <span className={styles.scheduleTime}>{item.time}</span>
-                <span className={styles.scheduleActivity}>{item.activity}</span>
-              </li>
-            ))}
-          </ul>
+      <header className={styles.pageHeader}>
+        <p className={styles.eyebrow}>{ScheduleData.dateRange}</p>
+        <h1 className={styles.scheduleTitle}>Camp Schedule</h1>
+        <p className={styles.subtitle}>{ScheduleData.subtitle}</p>
+        <div className={styles.headerRule} aria-hidden="true">
+          <span className={styles.ruleLine} />
+          <span className={styles.ruleDiamond} />
+          <span className={styles.ruleLine} />
         </div>
+      </header>
 
-        <div className={styles.scheduleSection}>
-          <h3 className={styles.scheduleSectionTitle}>
-            Full Days (August 14 - 16)
-          </h3>
-          <ul className={styles.scheduleList}>
-            {ScheduleData.regular.map((item, index) => (
-              <li key={index} className={styles.scheduleItem}>
-                <span className={styles.scheduleTime}>{item.time}</span>
-                <span className={styles.scheduleActivity}>{item.activity}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className={styles.scheduleSection}>
-          <h3 className={styles.scheduleSectionTitle}>
-            Departure Day (August 17)
-          </h3>
-          <ul className={styles.scheduleList}>
-            {ScheduleData.departure.map((item, index) => (
-              <li key={index} className={styles.scheduleItem}>
-                <span className={styles.scheduleTime}>{item.time}</span>
-                <span className={styles.scheduleActivity}>{item.activity}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <main className={styles.scheduleContainer} aria-label="Camp schedule timeline">
+        {ScheduleData.sections.map((section) => (
+          <section className={styles.scheduleSection} key={section.title}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.dayBadge}>{section.badge}</span>
+              <h2 className={styles.scheduleSectionTitle}>{section.title}</h2>
+              <span className={styles.sectionRule} aria-hidden="true" />
+            </div>
+            <ol className={styles.scheduleList}>
+              {section.events.map((item) => (
+                <li
+                  key={`${section.title}-${item.time}-${item.activity}`}
+                  className={
+                    item.highlight
+                      ? `${styles.scheduleItem} ${styles.highlight}`
+                      : styles.scheduleItem
+                  }
+                  data-highlighted={item.highlight ? "true" : undefined}
+                >
+                  <time className={styles.scheduleTime}>{item.time}</time>
+                  <span className={styles.scheduleActivity}>{item.activity}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </main>
     </div>
   );
 };

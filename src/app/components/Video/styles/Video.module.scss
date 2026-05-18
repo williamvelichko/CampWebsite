@@ -1,25 +1,37 @@
 @import "../../../styles/styles.scss";
 
 .videoSection {
-  text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  width: 100%;
+  padding: 0 1rem 4.75rem;
+  background: $primary-color;
 }
 
 .video {
-  width: 100%;
+  width: min(100%, 1040px);
   height: auto;
-  border-radius: 10px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(14, 26, 46, 0.12);
+  background: $accent-color;
   object-fit: contain;
   -webkit-overflow-scrolling: touch;
+}
 
-  @media (min-width: 800px) {
-    width: 80%;
+@media (max-width: 599px) {
+  .videoSection {
+    padding-bottom: 4rem;
   }
 
-  @media (max-width: 799px) {
-    height: 100%;
-    min-height: 400px;
+  .video {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 800px) {
+  .videoSection {
+    padding-right: 2rem;
+    padding-bottom: 6rem;
+    padding-left: 2rem;
   }
 }

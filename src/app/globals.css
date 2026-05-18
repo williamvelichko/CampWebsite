@@ -1,23 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #fbf8f1;
+  --color-bg-2: #f3eddf;
+  --color-ink: #0e1a2e;
+  --color-ink-2: #384a66;
+  --color-ink-3: #6a7892;
+  --color-gold: #b8902e;
+  --color-gold-light: #d9b855;
+  --color-gold-dark: #8a6a1f;
+  --color-rule: rgba(14, 26, 46, 0.12);
+  --color-rule-soft: rgba(14, 26, 46, 0.06);
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family:
-    "Avenir Next",
-    "Segoe UI",
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-  color: #14213d;
-  background-color: #ffffff;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
 }
 
 #__next {
@@ -28,4 +49,13 @@ body {
 
 main {
   flex: 1;
+}
+
+a {
+  color: inherit;
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
 }

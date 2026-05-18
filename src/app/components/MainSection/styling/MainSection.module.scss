@@ -2,124 +2,299 @@
 
 .hero {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
+  padding-top: 4.75rem;
+  background: #0a1226;
+  text-align: center;
+}
+
+.imageWrapper,
+.tintOverlay,
+.engraveOverlay,
+.vignetteOverlay,
+.glowOverlay {
+  position: absolute;
+  inset: 0;
 }
 
 .imageWrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
+  z-index: 0;
 }
 
 .image {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  object-position: center;
+}
+
+.tintOverlay {
+  z-index: 1;
+  background: linear-gradient(
+    170deg,
+    rgba(8, 18, 42, 0.62) 0%,
+    rgba(4, 10, 26, 0.46) 45%,
+    rgba(2, 6, 18, 0.82) 100%
+  );
+}
+
+.engraveOverlay {
+  z-index: 2;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 5px,
+      rgba(220, 210, 180, 0.018) 5px,
+      rgba(220, 210, 180, 0.018) 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 5px,
+      rgba(220, 210, 180, 0.014) 5px,
+      rgba(220, 210, 180, 0.014) 6px
+    );
+}
+
+.vignetteOverlay {
+  z-index: 3;
+  background: radial-gradient(
+    ellipse 85% 78% at 50% 50%,
+    transparent 25%,
+    rgba(0, 4, 16, 0.88) 100%
+  );
+}
+
+.glowOverlay {
+  z-index: 4;
+  background: radial-gradient(
+    ellipse 55% 48% at 50% 52%,
+    rgba(220, 180, 80, 0.16) 0%,
+    transparent 70%
+  );
 }
 
 .overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.1);
-
+  position: relative;
+  z-index: 5;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  text-align: center;
-  color: #fff;
-  padding: 0 20px;
+  justify-content: center;
+  width: min(100%, 960px);
+  min-height: calc(100svh - 4.75rem);
+  padding: 4rem 1rem 6.5rem;
+  color: $primary-color;
 }
-.textContainer {
+
+.heroContent {
   width: 100%;
-  height: 40%;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: $gold-light-color;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.heroTitle {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+  text-shadow: 0 0 60px rgba(220, 180, 80, 0.3),
+    0 4px 14px rgba(0, 0, 0, 0.75);
+}
 
-  @media (min-width: 800px) {
-    height: 25%;
+.heroThe,
+.heroOf,
+.heroWord {
+  display: block;
+  font-family: $serif-font;
+  line-height: 0.95;
+}
+
+.heroThe {
+  color: rgba(243, 237, 223, 0.74);
+  font-size: clamp(1.75rem, 8vw, 2.75rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.heroWord {
+  color: $primary-color;
+  font-size: clamp(4.4rem, 20vw, 9rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.heroOf {
+  color: $gold-light-color;
+  font-size: clamp(2.8rem, 13vw, 5.375rem);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.heroRule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem 0 1.125rem;
+
+  span:first-child,
+  span:last-child {
+    width: 4.375rem;
+    height: 1px;
+    background: $gold-light-color;
+    opacity: 0.7;
   }
+
+  span:nth-child(2) {
+    width: 0.375rem;
+    height: 0.375rem;
+    background: $gold-light-color;
+    transform: rotate(45deg);
+  }
+}
+
+.subtitle {
+  margin: 0;
+  color: rgba(243, 237, 223, 0.72);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.ctaContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.registerButton,
+.scheduleButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  border-radius: 2px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .registerButton {
-  display: block;
-  width: 100%;
-  max-width: 220px;
-  margin: 20px auto 0;
-  padding: 14px 28px;
-  background-color: #89650c;
+  padding: 0.9rem 2rem;
+  background: $gold-color;
   color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
-    background-color: darken(#b8860b, 10%);
-    transform: translateY(-2px);
+    background: $gold-light-color;
+    transform: translateY(-1px);
   }
+}
 
-  &:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.scheduleButton {
+  padding: 0.85rem 1.6rem;
+  border: 1px solid rgba(243, 237, 223, 0.4);
+  color: $primary-color;
+
+  &:hover {
+    border-color: $gold-light-color;
+    color: $gold-light-color;
   }
 }
 
 .comingSoonBadge {
   width: 100%;
   max-width: 320px;
-  margin: 20px auto 0;
-  padding: 14px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 999px;
-  background-color: rgba(20, 33, 61, 0.4);
+  padding: 0.875rem 1.25rem;
+  border: 1px solid rgba(243, 237, 223, 0.4);
+  border-radius: 2px;
+  background-color: rgba(14, 26, 46, 0.58);
   backdrop-filter: blur(8px);
-  color: #fff;
-  font-size: 1rem;
+  color: $primary-color;
+  font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
-.bounceArrow {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: 3rem;
-  margin-top: 30px;
-  color: white;
-  animation: bounce 2s infinite;
+.scrollCue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(243, 237, 223, 0.55);
+    font-size: 0.625rem;
+    letter-spacing: 0.24em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+.scrollArrow {
+  width: 1rem;
+  height: 1rem;
+  border-right: 1px solid rgba(243, 237, 223, 0.55);
+  border-bottom: 1px solid rgba(243, 237, 223, 0.55);
+  animation: bounce 2s ease-in-out infinite;
+  transform: rotate(45deg);
 }
 
 @keyframes bounce {
   0%,
-  20%,
-  50%,
-  80%,
   100% {
-    transform: translateY(0);
+    opacity: 0.4;
+    transform: rotate(45deg) translateY(0);
   }
-  40% {
-    transform: translateY(-10px);
+
+  50% {
+    opacity: 0.9;
+    transform: rotate(45deg) translateY(5px);
   }
-  60% {
-    transform: translateY(-5px);
+}
+
+@media (min-width: 640px) {
+  .overlay {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 1.375rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.32em;
+  }
+
+  .subtitle {
+    letter-spacing: 0.28em;
   }
 }
