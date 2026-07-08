@@ -22,7 +22,7 @@ Generated npm lockfile. Pins exact dependency versions so installs are reproduci
 
 ### `.env.example`
 
-Example environment configuration for local development. Documents the `NEXT_PUBLIC_TEMPORARY_MODE` flag used to switch the site into a temporary holding state and `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` used for the embedded registration/payment form.
+Example environment configuration for local development. Documents the `NEXT_PUBLIC_TEMPORARY_MODE` flag used to switch the site into a temporary holding state, `NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK` used to show or hide the embedded registration/payment link, and `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` used for the embedded registration/payment form.
 
 ### `next.config.mjs`
 
@@ -70,10 +70,12 @@ Shared site-level configuration.
 Logic:
 
 - Reads `NEXT_PUBLIC_TEMPORARY_MODE` from the environment
+- Reads `NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK` from the environment, defaulting to visible unless it is set to `false`
 - Reads `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` from the environment, with a checked-in fallback URL for the registration/payment form
 - Exposes a single boolean used by both server and client components
 - Builds the primary navigation links based on whether temporary mode is enabled
 - Stores the shared temporary-mode message shown on disabled routes
+- Stores the shared closed-registration message shown when the registration/payment link is hidden
 
 ### `src/app/config/site.test.ts`
 
@@ -84,6 +86,7 @@ Coverage:
 - verifies the env flag parsing
 - verifies the temporary and non-temporary navigation sets
 - verifies the default full-navigation fallback when the env flag is unset
+- verifies the registration/payment link visibility flag and default behavior
 - verifies the default and configured Subsplash registration/payment form URLs
 
 ## App router
@@ -486,9 +489,11 @@ Registration page component.
 Logic:
 
 - Reads the external registration/payment form URL from shared site config
+- Reads the registration/payment link visibility flag from shared site config
 - Shows hard-coded August 12-16, 2026 camp date information and registration deadline information
-- Embeds the external registration form inside an `iframe`
-- Includes helper copy below the embedded form frame
+- Embeds the external registration form inside an `iframe` when the payment link is visible
+- Includes helper copy below the embedded form frame when the payment link is visible
+- Shows a closed-registration disclaimer when the payment link is hidden
 
 Note:
 
@@ -500,7 +505,8 @@ Component test for `Registration`.
 
 Coverage:
 
-- verifies the 2026 registration heading, dates, embedded form URL, and direct registration link render
+- verifies the 2026 registration heading, dates, embedded form URL, and direct registration link render when the payment link is visible
+- verifies the closed-registration disclaimer renders and the embedded form/direct link are absent when the payment link is hidden
 
 ## Temporary notice
 
@@ -528,7 +534,7 @@ Styles for the temporary notice layout and card using the 2026 cream/navy/gold v
 
 ### `src/app/components/Registration/styles/Registration.module.scss`
 
-Styles for the registration page hero, sticky date block on desktop, and large embedded form frame.
+Styles for the registration page hero, sticky date block on desktop, large embedded form frame, and closed-registration disclaimer.
 
 ## Footer
 

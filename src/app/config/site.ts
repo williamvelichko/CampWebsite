@@ -1,6 +1,12 @@
 export const isTemporaryModeEnabled =
   process.env.NEXT_PUBLIC_TEMPORARY_MODE === "true";
 
+const configuredRegistrationPaymentLinkVisibility =
+  process.env.NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK?.trim().toLowerCase();
+
+export const isRegistrationPaymentLinkVisible =
+  configuredRegistrationPaymentLinkVisibility !== "false";
+
 const defaultRegistrationFormUrl =
   "https://subsplash.com/bbc-ca/lb/ev/+rqpz76d/register";
 
@@ -26,4 +32,10 @@ export const temporaryModeMessage = {
   title: "Registration will open later",
   description:
     "We are temporarily updating camp content. The new registration, schedule, and other event details will be published soon.",
+};
+
+export const registrationPaymentLinkClosedMessage = {
+  title: "Registration is currently closed",
+  description:
+    "The registration/payment link is temporarily unavailable. Please check back later for registration updates.",
 };

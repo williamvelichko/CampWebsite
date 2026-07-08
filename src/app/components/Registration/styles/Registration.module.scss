@@ -151,6 +151,45 @@
   }
 }
 
+.closedNotice {
+  display: flex;
+  min-height: 28rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem;
+  background: rgba(14, 26, 46, 0.04);
+  text-align: center;
+}
+
+.closedEyebrow {
+  margin: 0 0 0.75rem;
+  color: $gold-color;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.closedTitle {
+  max-width: 34rem;
+  margin: 0;
+  color: $accent-color;
+  font-family: $serif-font;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.02;
+}
+
+.closedDescription {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  color: $muted-color;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 @media (min-width: 800px) {
   .divContainer {
     padding: 8.5rem 2rem 6.5rem;

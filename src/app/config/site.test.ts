@@ -44,6 +44,23 @@ describe("site config", () => {
     expect(site.primaryNavLinks).toHaveLength(4);
   });
 
+  it("shows the registration payment link by default", async () => {
+    const site = await loadSiteConfig();
+
+    expect(site.isRegistrationPaymentLinkVisible).toBe(true);
+  });
+
+  it("hides the registration payment link when the env flag is false", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK", " false ");
+
+    const site = await loadSiteConfig();
+
+    expect(site.isRegistrationPaymentLinkVisible).toBe(false);
+    expect(site.registrationPaymentLinkClosedMessage.title).toBe(
+      "Registration is currently closed"
+    );
+  });
+
   it("uses the default Subsplash registration URL when the env value is blank", async () => {
     vi.stubEnv("NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL", "");
 

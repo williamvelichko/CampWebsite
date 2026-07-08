@@ -9,7 +9,7 @@ The site is a mostly static marketing website with four public routes:
 - `/`: 2026 landing page with the full-bleed hero image, centered "The Gospel of God" title, Romans 1:16 theme verse, camp promo video, and activity highlights
 - `/schedule`: 2026 editorial timeline schedule page rendered from a local JSON file
 - `/faq`: accordion FAQ page rendered from a local JSON file
-- `/registration`: registration page with important dates and an embedded external form
+- `/registration`: registration page with important dates and an embedded external form when registration is open
 
 The app uses the App Router in `src/app`, SCSS modules for component-level styling, and assets from `public/`.
 
@@ -21,6 +21,7 @@ Example:
 
 ```bash
 NEXT_PUBLIC_TEMPORARY_MODE=true
+NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK=false
 NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL=https://subsplash.com/bbc-ca/lb/ev/+rqpz76d/register
 ```
 
@@ -33,6 +34,15 @@ When temporary mode is `true`:
 - `/registration` shows a temporary notice instead of the registration form
 
 Use `.env.example` as the starting point for local configuration.
+
+## Registration payment link visibility
+
+The embedded registration/payment form can be hidden independently from temporary mode with `NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK`.
+
+- unset or `true`: show the embedded form and the direct registration link
+- `false`: hide the embedded form and direct link, and show a "Registration is currently closed" disclaimer on `/registration`
+
+This is useful when the rest of the registration page should remain visible but the payment link is not ready to publish.
 
 ## How the site works
 
@@ -47,7 +57,7 @@ Use `.env.example` as the starting point for local configuration.
 - The schedule page uses the 2026 editorial timeline design, with day badges, Coffee Cart rows, a gold vertical timeline, and highlighted workshop/service/devotional/church events.
 - The FAQ and registration pages use the same mobile-first page-hero treatment as the schedule page.
 - The activity cards use the existing self-hosted WebP images from `public/` for the Preaching, Fellowship, Worship, and Prayer cards.
-- The registration page embeds the Subsplash registration/payment form from `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` inside an `iframe` and lists the 2026 camp and registration dates.
+- The registration page lists the 2026 camp and registration dates, then either embeds the Subsplash registration/payment form from `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` or shows the closed-registration disclaimer when `NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK=false`.
 
 ## Content update guide
 
@@ -59,6 +69,7 @@ Use these files for routine content changes:
 - Landing hero image: `public/Auburn-Camp-Banner.jpg`
 - Landing hero title and display styling: `src/app/components/MainSection/MainSection.tsx` and `src/app/components/MainSection/styling/MainSection.module.scss`
 - Registration page copy: `src/app/components/Registration/Registration.tsx`
+- Registration/payment form visibility: `NEXT_PUBLIC_SHOW_REGISTRATION_PAYMENT_LINK` in `.env` or `.env.example`
 - Registration/payment form URL: `NEXT_PUBLIC_SUBSPLASH_REGISTRATION_URL` in `.env` or `.env.example`, with the fallback value in `src/app/config/site.ts`
 - Footer contact and social links: `src/app/components/Footer/Footer.tsx`
 - Header navigation links: `src/app/components/Header/components/DesktopNavbar.tsx` and `src/app/components/Header/components/MobileNavbar.tsx`
@@ -99,12 +110,12 @@ The current automated tests cover the public site routes, shared layout/config, 
 
 - route composition for `/`, `/faq`, `/schedule`, and `/registration`
 - shared layout wiring in `src/app/layout.tsx`
-- env-driven site config in `src/app/config/site.ts`, including temporary mode and the registration/payment form URL
+- env-driven site config in `src/app/config/site.ts`, including temporary mode, registration/payment form visibility, and the registration/payment form URL
 - header behavior plus desktop and mobile navigation variants
 - homepage hero, verse, promo video, and activities sections
 - FAQ accordion rendering for both HTML-string and list answers
 - schedule rendering from local JSON content
-- registration copy and embedded external form
+- registration copy, embedded external form, and closed-registration disclaimer
 - footer branding, navigation, contact details, social links, and copyright
 - reusable temporary notice defaults and custom copy
 
@@ -116,7 +127,7 @@ Test support files:
 Current suite size:
 
 - 19 test files
-- 37 tests
+- 40 tests
 
 ## Project structure
 
